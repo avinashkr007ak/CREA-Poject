@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Security headers via meta (supplements server-side headers) -->
-<meta http-equiv="Content-Security-Policy" content="
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Security headers via meta (supplements server-side headers) -->
+  <meta http-equiv="Content-Security-Policy" content="
   default-src 'self' https://*.googleapis.com https://*.gstatic.com https://*.firebaseapp.com https://*.firebasestorage.app;
   script-src  'self' 'unsafe-inline' https://www.gstatic.com https://*.googleapis.com;
   style-src   'self' 'unsafe-inline' https://fonts.googleapis.com;
@@ -15,540 +16,1044 @@
   base-uri    'self';
   form-action 'self';
 ">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<title>CREA</title>
-<meta name="description" content="Crea: the all-in-one planner for assignments, habits, pomodoro, budget and more.">
-<link href="crea.css" rel="stylesheet">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <title>CREA</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <meta name="description" content="Crea: the all-in-one planner for assignments, habits, timer, budget and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+  <link href="css/crea.css" rel="stylesheet">
 
 </head>
+
 <body>
 
-<!-- SIDEBAR -->
-<aside class="sidebar">
-  <div class="sidebar-logo">
-    <img src="logo.png" alt="Crea" class="sidebar-logo-img">
-    <div class="logo-text crea-name">CREA<span class="logo-tagline">Your Day, Organized</span></div>
-  </div>
-  <nav class="nav-items">
-    <div class="nav-item active" onclick="showPage('dashboard')"><span class="nav-icon">🏠</span><span>Dashboard</span></div>
-    <div class="nav-item" onclick="showPage('assignments')"><span class="nav-icon">📋</span><span>Assignments</span></div>
-    <div class="nav-item" onclick="showPage('courses')"><span class="nav-icon">🎓</span><span>Courses</span></div>
-    <div class="nav-item" onclick="showPage('study')"><span class="nav-icon">📅</span><span>Study Planner</span></div>
-    <div class="nav-item" onclick="showPage('pomodoro')"><span class="nav-icon">⏱️</span><span>Pomodoro</span></div>
-    <div class="nav-item" onclick="showPage('habits')"><span class="nav-icon">✅</span><span>Habits</span></div>
-    <div class="nav-item" onclick="showPage('knowledge')"><span class="nav-icon">🏛️</span><span>Knowledge Hub</span></div>
-    <div class="nav-item" onclick="showPage('budget')"><span class="nav-icon">💰</span><span>Budget</span></div>
-    <div class="nav-item" onclick="showPage('settings')"><span class="nav-icon">⚙️</span><span>Settings</span></div>
-    <div class="nav-item upgrade-nav" onclick="openUpgradeModal()" id="nav-upgrade"><span class="nav-icon">⭐</span><span>Go Premium</span></div>
-  </nav>
-  <div class="sidebar-footer">
-    <div id="clock-sidebar">--:--</div>
-    <div class="date-display" id="date-sidebar"></div>
-    <button class="about-link-btn" onclick="openFooterModal()" title="About Crea">
-      <span>🔗</span> About & Links
-    </button>
-  </div>
-</aside>
+  <!-- SIDEBAR OVERLAY -->
+  <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebarState()"></div>
 
-<!-- MAIN -->
-<div class="main">
-  <div class="topbar">
-    <div class="page-title" id="topbar-title">Dashboard</div>
-    <div class="topbar-right">
-      <button class="btn btn-sm" id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme" style="font-size:16px;padding:4px 8px;">☀️</button>
-      <button class="btn btn-sm" onclick="showPage('settings')" title="Settings" style="font-size:16px;padding:4px 8px;margin-left:4px;">⚙️</button>
-      <button class="btn btn-sm" id="auth-btn" onclick="handleAuthBtn()" title="Logout" style="font-size:16px;padding:4px 8px;margin-left:4px;">🚪</button>
-      <div id="topbar-action"></div>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="assets/logo.png" alt="Crea" class="sidebar-logo-img">
+      <div class="logo-text">CREA<span>Your Day, Organized</span></div>
     </div>
-  </div>
-  <div class="content">
+    <nav class="nav-items">
+      <div class="nav-item active" onclick="showPage('dashboard')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="9"></rect>
+          <rect x="14" y="3" width="7" height="5"></rect>
+          <rect x="14" y="12" width="7" height="9"></rect>
+          <rect x="3" y="16" width="7" height="5"></rect>
+        </svg>
+        <span>Dashboard</span>
+      </div>
+      <div class="nav-item" onclick="showPage('assignments')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        <span>Assignments</span>
+      </div>
+      <div class="nav-item" onclick="showPage('courses')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+          <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+        </svg>
+        <span>Courses</span>
+      </div>
+      <div class="nav-item" onclick="showPage('study')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        <span>Study Planner</span>
+      </div>
+      <div class="nav-item" onclick="showPage('timer')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <span>Timer</span>
+      </div>
+      <div class="nav-item" onclick="showPage('habits')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span>Habits</span>
+      </div>
+      <div class="nav-item" onclick="showPage('knowledge')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+        <span>Knowledge Hub</span>
+      </div>
+      <div class="nav-item" onclick="showPage('draw')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+          <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+          <path d="M2 2l7.586 7.586"></path>
+          <circle cx="11" cy="11" r="2"></circle>
+        </svg>
+        <span>Canvas</span>
+      </div>
+      <div class="nav-item" onclick="showPage('budget')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="1" x2="12" y2="23"></line>
+          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+        </svg>
+        <span>Budget</span>
+      </div>
+      <div class="nav-item" onclick="showPage('settings')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path
+            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+          </path>
+        </svg>
+        <span>Settings</span>
+      </div>
+      <div class="nav-item upgrade-nav" onclick="openUpgradeModal()" id="nav-upgrade">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polygon
+            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+          </polygon>
+        </svg>
+        <span>Go Premium</span>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div id="clock-sidebar">--:--</div>
+      <div class="date-display" id="date-sidebar"></div>
+      <button class="about-link-btn" onclick="openFooterModal()" title="About Crea">
+        <span>🔗</span> About & Links
+      </button>
+    </div>
+  </aside>
 
-    <!-- DASHBOARD -->
-    <div class="page active" id="page-dashboard">
-      <div class="stats-row">
-        <div class="stat-card"><div class="stat-num" id="stat-tasks">0</div><div class="stat-label">Pending Tasks</div></div>
-        <div class="stat-card"><div class="stat-num" id="stat-habits">0%</div><div class="stat-label">Habits Today</div></div>
-        <div class="stat-card"><div class="stat-num" id="stat-courses">0</div><div class="stat-label">Courses</div></div>
-        <div class="stat-card"><div class="stat-num" id="stat-balance">₹0</div><div class="stat-label">Budget Balance</div></div>
+  <!-- MAIN -->
+  <div class="main">
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="mobile-menu-btn" onclick="toggleSidebarState()">☰</button>
+        <div class="crea-name" style="font-size:18px;">CREA</div>
+        <div style="width:1px;height:18px;background:var(--border)"></div>
+        <div class="page-title" id="topbar-title">Dashboard</div>
       </div>
-      <div class="grid-2">
-        <div class="card">
-          <div class="card-header"><div class="card-title">📋 Due Soon</div></div>
-          <div id="dash-tasks"><div class="empty"><div class="empty-icon">📭</div><div class="empty-text">No tasks yet</div></div></div>
-        </div>
-        <div class="card">
-          <div class="card-header"><div class="card-title">✅ Today's Habits</div></div>
-          <div id="dash-habits"><div class="empty"><div class="empty-icon">🌱</div><div class="empty-text">No habits yet</div></div></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header"><div class="card-title">📅 Today's Study Sessions</div></div>
-        <div id="dash-sessions"><div class="empty"><div class="empty-icon">📖</div><div class="empty-text">No sessions planned</div></div></div>
+      <div class="topbar-right">
+        <button class="btn btn-sm" id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme"
+          style="display:flex;align-items:center;justify-content:center;padding:6px 10px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+        <button class="btn btn-sm" onclick="showPage('settings')" title="Settings"
+          style="display:flex;align-items:center;justify-content:center;padding:6px 10px;margin-left:4px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path
+              d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+            </path>
+          </svg>
+        </button>
+        <button class="btn btn-sm" id="auth-btn" onclick="handleAuthBtn()" title="Account"
+          style="display:flex;align-items:center;justify-content:center;padding:6px 10px;margin-left:4px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </button>
       </div>
     </div>
+    <div class="content">
 
-    <!-- ASSIGNMENTS -->
-    <div class="page" id="page-assignments">
-      <div class="card">
-        <div class="section-label">Add Assignment / Exam</div>
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">Title</label><input class="form-input" id="task-title" placeholder="e.g. Math Quiz Chapter 5"></div>
-          <div class="form-group"><label class="form-label">Course</label><input class="form-input" id="task-course" placeholder="e.g. Mathematics"></div>
-        </div>
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">Due Date</label><input class="form-input" type="date" id="task-due"></div>
-          <div class="form-group"><label class="form-label">Type</label>
-            <select class="form-input" id="task-type"><option>Assignment</option><option>Exam</option><option>Project</option><option>Quiz</option></select>
+      <!-- DASHBOARD -->
+      <div class="page active" id="page-dashboard">
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-num" id="stat-tasks">0</div>
+            <div class="stat-label">Pending Tasks</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" id="stat-habits">0%</div>
+            <div class="stat-label">Habits Today</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" id="stat-courses">0</div>
+            <div class="stat-label">Courses</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" id="stat-balance">₹0</div>
+            <div class="stat-label">Budget Balance</div>
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">Priority</label>
-            <select class="form-input" id="task-priority"><option>Low</option><option>Medium</option><option selected>High</option><option>Urgent</option></select>
-          </div>
-          <div class="form-group" style="display:flex;align-items:flex-end"><button class="btn btn-primary" style="width:100%" onclick="addTask()">+ Add Task</button></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">All Tasks</div>
-          <div style="display:flex;gap:8px">
-            <select class="form-input" id="filter-status" style="width:auto;padding:5px 10px;font-size:12px" onchange="renderTasks()"><option value="">All</option><option value="pending">Pending</option><option value="done">Completed</option></select>
-            <select class="form-input" id="filter-priority" style="width:auto;padding:5px 10px;font-size:12px" onchange="renderTasks()"><option value="">All Priority</option><option>Urgent</option><option>High</option><option>Medium</option><option>Low</option></select>
-          </div>
-        </div>
-        <div id="tasks-list"></div>
-      </div>
-    </div>
-
-    <!-- COURSES -->
-    <div class="page" id="page-courses">
-      <div class="card">
-        <div class="section-label">Add Course</div>
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">Course Name</label><input class="form-input" id="course-name" placeholder="e.g. AP Physics"></div>
-          <div class="form-group"><label class="form-label">Teacher</label><input class="form-input" id="course-teacher" placeholder="e.g. Dr. Smith"></div>
-        </div>
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">Schedule (e.g. Mon/Wed 9am)</label><input class="form-input" id="course-schedule" placeholder="Mon/Wed 9:00 AM"></div>
-          <div class="form-group" style="display:flex;align-items:flex-end"><button class="btn btn-primary" style="width:100%" onclick="addCourse()">+ Add Course</button></div>
-        </div>
-      </div>
-      <div id="courses-list"></div>
-    </div>
-
-    <!-- STUDY PLANNER -->
-    <div class="page" id="page-study">
-      <div class="card">
-        <div class="section-label">Add Study Session</div>
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">Day</label>
-            <select class="form-input" id="session-day"><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select>
-          </div>
-          <div class="form-group"><label class="form-label">Subject</label><input class="form-input" id="session-subject" placeholder="e.g. Economics"></div>
-        </div>
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">Start Time</label><input class="form-input" type="time" id="session-start" value="09:00"></div>
-          <div class="form-group"><label class="form-label">End Time</label><input class="form-input" type="time" id="session-end" value="10:00"></div>
-        </div>
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">Topic / Notes</label><input class="form-input" id="session-topic" placeholder="e.g. Lecture Review &amp; Notes"></div>
-          <div class="form-group" style="display:flex;align-items:flex-end"><button class="btn btn-primary" style="width:100%" onclick="addSession()">+ Add Session</button></div>
-        </div>
-      </div>
-      <div id="schedule-by-day"></div>
-    </div>
-
-    <!-- POMODORO -->
-    <div class="page" id="page-pomodoro">
-      <div class="grid-2">
-        <div class="card">
-          <div class="pomodoro-wrap">
-            <div class="pomo-tabs">
-              <button class="pomo-tab active" onclick="setMode('work',25)">Focus</button>
-              <button class="pomo-tab" onclick="setMode('short',5)">Short Break</button>
-              <button class="pomo-tab" onclick="setMode('long',15)">Long Break</button>
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">📋 Due Soon</div>
             </div>
-            <div class="pomo-clock" id="pomo-display">25:00</div>
-            <div class="pomo-label" id="pomo-label">Ready to focus?</div>
-            <div class="pomo-progress"><div class="pomo-progress-fill" id="pomo-prog" style="width:0%"></div></div>
-            <div style="margin-top:20px" class="pomo-controls">
-              <button class="pomo-btn" onclick="resetPomo()" title="Reset">↺</button>
-              <button class="pomo-btn main-btn" id="pomo-start-btn" onclick="togglePomo()">▶</button>
-              <button class="pomo-btn" onclick="skipPomo()" title="Skip">⏭</button>
-            </div>
-            <div class="pomo-sessions" id="pomo-dots"></div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-title" style="margin-bottom:16px">📊 Today's Sessions</div>
-          <div id="pomo-log"><div class="empty"><div class="empty-icon">⏱️</div><div class="empty-text">Complete a session to log it</div></div></div>
-          <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
-            <div style="display:flex;justify-content:space-between;font-size:14px">
-              <span style="color:var(--muted)">Sessions today</span><span id="pomo-count">0 / 4</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;font-size:14px;margin-top:8px">
-              <span style="color:var(--muted)">Focus time</span><span id="pomo-total-time">0 min</span>
+            <div id="dash-tasks">
+              <div class="empty">
+                <div class="empty-icon">📭</div>
+                <div class="empty-text">No tasks yet</div>
+              </div>
             </div>
           </div>
-          <div class="card-title" style="margin:20px 0 12px">📝 Current Task</div>
-          <input class="form-input" id="pomo-task-input" placeholder="What are you working on?">
-        </div>
-      </div>
-    </div>
-
-    <!-- HABITS -->
-    <div class="page" id="page-habits">
-      <div class="card">
-        <div class="section-label">Add Habit</div>
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">Habit Name</label><input class="form-input" id="habit-name" placeholder="e.g. 💧 Drink water"></div>
-          <div class="form-group"><label class="form-label">Category</label>
-            <select class="form-input" id="habit-cat"><option>Health</option><option>Study</option><option>Fitness</option><option>Mindfulness</option><option>Sleep</option><option>Other</option></select>
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">✅ Today's Habits</div>
+            </div>
+            <div id="dash-habits">
+              <div class="empty">
+                <div class="empty-icon">🌱</div>
+                <div class="empty-text">No habits yet</div>
+              </div>
+            </div>
           </div>
         </div>
-        <button class="btn btn-primary" onclick="addHabit()">+ Add Habit</button>
-      </div>
-      <div class="grid-2">
         <div class="card">
           <div class="card-header">
-            <div class="card-title">Today's Habits</div>
-            <div id="habits-pct" style="font-family:var(--font-head);font-size:18px;font-weight:700;color:var(--green)">0%</div>
+            <div class="card-title">📅 Today's Study Sessions</div>
           </div>
-          <div class="progress-wrap" style="margin-bottom:16px">
-            <div class="progress-bg"><div class="progress-fill" id="habits-bar" style="width:0%"></div></div>
+          <div id="dash-sessions">
+            <div class="empty">
+              <div class="empty-icon">📖</div>
+              <div class="empty-text">No sessions planned</div>
+            </div>
           </div>
-          <div id="habits-list"></div>
         </div>
+      </div>
+
+      <!-- ASSIGNMENTS -->
+      <div class="page" id="page-assignments">
         <div class="card">
-          <div class="card-title" style="margin-bottom:16px">🔥 Streaks & Stats</div>
-          <div id="habits-stats"><div class="empty"><div class="empty-icon">🌱</div><div class="empty-text">No habits yet</div></div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- KNOWLEDGE HUB -->
-    <div class="page" id="page-knowledge">
-      <div class="card">
-        <div class="section-label">Capture a Note / Resource</div>
-        <div class="form-group"><label class="form-label">Title</label><input class="form-input" id="note-title" placeholder="e.g. Exam prep strategy"></div>
-        <div class="form-group"><label class="form-label">Content</label><textarea class="form-input" id="note-content" rows="3" placeholder="Write your notes, links, or ideas here..."></textarea></div>
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">Topic / Tag</label><input class="form-input" id="note-tag" placeholder="e.g. Psychology"></div>
-          <div class="form-group"><label class="form-label">Type</label>
-            <select class="form-input" id="note-type"><option>Note</option><option>Resource</option><option>Idea</option><option>Summary</option></select>
+          <div class="section-label">Add Assignment / Exam</div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Title</label><input class="form-input" id="task-title"
+                placeholder="e.g. Math Quiz Chapter 5"></div>
+            <div class="form-group"><label class="form-label">Course</label><input class="form-input" id="task-course"
+                placeholder="e.g. Mathematics"></div>
           </div>
-        </div>
-        <button class="btn btn-primary" onclick="addNote()">+ Save Note</button>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">Knowledge Inbox</div>
-          <input class="form-input" id="note-search" placeholder="🔍 Search..." style="width:200px;padding:6px 10px;font-size:13px" oninput="renderNotes()">
-        </div>
-        <div id="notes-list"></div>
-      </div>
-    </div>
-
-    <!-- BUDGET -->
-    <div class="page" id="page-budget">
-      <div class="budget-summary">
-        <div class="budget-card"><div class="budget-amount income" id="b-income">₹0</div><div class="budget-lbl">Total Income</div></div>
-        <div class="budget-card"><div class="budget-amount expense" id="b-expense">₹0</div><div class="budget-lbl">Total Expenses</div></div>
-        <div class="budget-card"><div class="budget-amount balance" id="b-balance">₹0</div><div class="budget-lbl">Balance</div></div>
-      </div>
-      <div class="card">
-        <div class="section-label">Add Transaction</div>
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">Description</label><input class="form-input" id="txn-desc" placeholder="e.g. Groceries"></div>
-          <div class="form-group"><label class="form-label">Amount (₹)</label><input class="form-input" type="number" id="txn-amount" placeholder="500" min="0"></div>
-        </div>
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">Category</label>
-            <select class="form-input" id="txn-cat"><option>Housing</option><option>Groceries</option><option>Transport</option><option>Dining</option><option>Books</option><option>Subscriptions</option><option>Savings</option><option>Entertainment</option><option>Other</option></select>
-          </div>
-          <div class="form-group"><label class="form-label">Type</label>
-            <select class="form-input" id="txn-type"><option value="expense">Expense</option><option value="income">Income</option></select>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">Date</label><input class="form-input" type="date" id="txn-date"></div>
-          <div class="form-group" style="display:flex;align-items:flex-end"><button class="btn btn-primary" style="width:100%" onclick="addTransaction()">+ Add Transaction</button></div>
-        </div>
-      </div>
-      <div class="grid-2">
-        <div class="card">
-          <div class="card-title" style="margin-bottom:16px">📊 By Category</div>
-          <div id="budget-categories"></div>
-        </div>
-        <div class="card">
-          <div class="card-title" style="margin-bottom:16px">📄 Transactions</div>
-          <div id="budget-list"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SETTINGS -->
-    <div class="page" id="page-settings">
-      <div class="settings-layout">
-        <nav class="settings-sidenav">
-          <div class="s-nav-item active" onclick="switchSettings('account',this)"><span>👤</span> Account</div>
-          <div class="s-nav-item" onclick="switchSettings('theme',this)"><span>🎨</span> Theme & Colors</div>
-          <div class="s-nav-item" onclick="switchSettings('language',this)"><span>🌐</span> Language</div>
-          <div class="s-nav-item" onclick="switchSettings('layout',this)"><span>📐</span> Layout</div>
-          <div class="s-nav-item s-logout" onclick="authLogout()"><span>🚪</span> Logout</div>
-        </nav>
-        <div class="settings-content">
-
-          <!-- Account -->
-          <div class="settings-section active" id="ss-account">
-            <div class="settings-section-title">Account</div>
-            <div class="card"><div id="s-account-display"><div class="empty"><div class="empty-icon">👤</div><div class="empty-text">Not signed in</div></div></div></div>
-            <div class="card">
-              <div class="settings-group-title">Subscription</div>
-              <div style="display:flex;justify-content:space-between;align-items:center">
-                <div><div style="font-weight:600">Free Plan</div><div style="font-size:12px;color:var(--muted);margin-top:3px">3 items per category · Upgrade for unlimited</div></div>
-                <button class="btn btn-primary btn-sm" onclick="openUpgradeModal()">⭐ Upgrade</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Theme -->
-          <div class="settings-section" id="ss-theme">
-            <div class="settings-section-title">Theme & Colors</div>
-            <div class="card">
-              <div class="settings-group-title">Appearance</div>
-              <div class="theme-grid">
-                <div class="theme-card selected" id="tc-light" onclick="applyTheme('light',this)">
-                  <div class="theme-preview-box tpb-light"><div class="tpb-bar"></div><div class="tpb-line"></div><div class="tpb-line"></div></div>
-                  <div class="theme-card-label">☀️ Light</div>
-                </div>
-                <div class="theme-card" id="tc-dark" onclick="applyTheme('dark',this)">
-                  <div class="theme-preview-box tpb-dark"><div class="tpb-bar"></div><div class="tpb-line"></div><div class="tpb-line"></div></div>
-                  <div class="theme-card-label">🌙 Dark</div>
-                </div>
-                <div class="theme-card" id="tc-system" onclick="applyTheme('system',this)">
-                  <div class="theme-preview-box tpb-system"></div>
-                  <div class="theme-card-label">💻 System</div>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="settings-group-title">Accent Color</div>
-              <div class="accent-grid">
-                <div class="accent-card selected" id="ac-default" onclick="applyAccent('default',this)"><div class="accent-swatch" style="background:linear-gradient(135deg,#2ba869,#15803d)"></div><div class="accent-card-label">Green</div></div>
-                <div class="accent-card" id="ac-red" onclick="applyAccent('red',this)"><div class="accent-swatch" style="background:linear-gradient(135deg,#dc2626,#ef4444)"></div><div class="accent-card-label">Red</div></div>
-                <div class="accent-card" id="ac-blue" onclick="applyAccent('blue',this)"><div class="accent-swatch" style="background:linear-gradient(135deg,#2563eb,#3b82f6)"></div><div class="accent-card-label">Blue</div></div>
-                <div class="accent-card" id="ac-purple" onclick="applyAccent('purple',this)"><div class="accent-swatch" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)"></div><div class="accent-card-label">Purple</div></div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="settings-group-title">Dark + Color Combos</div>
-              <div class="combo-grid">
-                <div class="combo-card" id="cc-dark-default" onclick="applyCombo('dark','default',this)"><div class="combo-preview" style="background:#141414;border-color:#3b9a6e"><span style="color:#4dbf8a;font-size:18px">●</span></div><div class="combo-label">Dark+Green</div></div>
-                <div class="combo-card" id="cc-dark-red" onclick="applyCombo('dark','red',this)"><div class="combo-preview" style="background:#141414;border-color:#e05555"><span style="color:#f08080;font-size:18px">●</span></div><div class="combo-label">Dark+Red</div></div>
-                <div class="combo-card" id="cc-dark-blue" onclick="applyCombo('dark','blue',this)"><div class="combo-preview" style="background:#141414;border-color:#4a90d9"><span style="color:#7ab3e8;font-size:18px">●</span></div><div class="combo-label">Dark+Blue</div></div>
-                <div class="combo-card" id="cc-dark-purple" onclick="applyCombo('dark','purple',this)"><div class="combo-preview" style="background:#141414;border-color:#9b59b6"><span style="color:#c39bd3;font-size:18px">●</span></div><div class="combo-label">Dark+Purple</div></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Language -->
-          <div class="settings-section" id="ss-language">
-            <div class="settings-section-title">Language</div>
-            <div class="card">
-              <div class="settings-group-title">Display Language</div>
-              <select class="form-input" id="lang-select" onchange="applyLanguage(this.value)" style="max-width:280px">
-                <option value="en">🇬🇧 English</option>
-                <option value="hi">🇮🇳 हिंदी (Hindi)</option>
-                <option value="ta">🇮🇳 தமிழ் (Tamil)</option>
-                <option value="te">🇮🇳 తెలుగు (Telugu)</option>
-                <option value="mr">🇮🇳 मराठी (Marathi)</option>
-                <option value="bn">🇮🇳 বাংলা (Bengali)</option>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Due Date</label><input class="form-input" type="date"
+                id="task-due"></div>
+            <div class="form-group"><label class="form-label">Type</label>
+              <select class="form-input" id="task-type">
+                <option>Assignment</option>
+                <option>Exam</option>
+                <option>Project</option>
+                <option>Quiz</option>
               </select>
-              <p style="margin-top:12px;font-size:12px;color:var(--muted)">Interface language for menus and labels.</p>
             </div>
           </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Priority</label>
+              <select class="form-input" id="task-priority">
+                <option>Low</option>
+                <option>Medium</option>
+                <option selected>High</option>
+                <option>Urgent</option>
+              </select>
+            </div>
+            <div class="form-group" style="display:flex;align-items:flex-end"><button class="btn btn-primary"
+                style="width:100%" onclick="addTask()">+ Add Task</button></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">All Tasks</div>
+            <div style="display:flex;gap:8px">
+              <select class="form-input" id="filter-status" style="width:auto;padding:5px 10px;font-size:12px"
+                onchange="renderTasks()">
+                <option value="">All</option>
+                <option value="pending">Pending</option>
+                <option value="done">Completed</option>
+              </select>
+              <select class="form-input" id="filter-priority" style="width:auto;padding:5px 10px;font-size:12px"
+                onchange="renderTasks()">
+                <option value="">All Priority</option>
+                <option>Urgent</option>
+                <option>High</option>
+                <option>Medium</option>
+                <option>Low</option>
+              </select>
+            </div>
+          </div>
+          <div id="tasks-list"></div>
+        </div>
+      </div>
 
-          <!-- Layout -->
-          <div class="settings-section" id="ss-layout">
-            <div class="settings-section-title">Sidebar & Layout</div>
-            <div class="card">
-              <div class="settings-group-title">Sidebar Behavior</div>
-              <div class="layout-grid">
-                <div class="layout-card selected" id="lc-fixed" onclick="applySidebarLayout('fixed',this)">
-                  <div class="layout-preview-box"><div class="lpb-sidebar wide"></div><div class="lpb-main"></div></div>
-                  <div class="layout-card-label">Fixed</div><div class="layout-card-desc">Always visible</div>
+      <!-- COURSES -->
+      <div class="page" id="page-courses">
+        <div class="card">
+          <div class="section-label">Add Course</div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Course Name</label><input class="form-input"
+                id="course-name" placeholder="e.g. AP Physics"></div>
+            <div class="form-group"><label class="form-label">Teacher</label><input class="form-input"
+                id="course-teacher" placeholder="e.g. Dr. Smith"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Schedule (e.g. Mon/Wed 9am)</label><input
+                class="form-input" id="course-schedule" placeholder="Mon/Wed 9:00 AM"></div>
+            <div class="form-group" style="display:flex;align-items:flex-end"><button class="btn btn-primary"
+                style="width:100%" onclick="addCourse()">+ Add Course</button></div>
+          </div>
+        </div>
+        <div id="courses-list"></div>
+      </div>
+
+      <!-- STUDY PLANNER -->
+      <div class="page" id="page-study">
+        <div class="card">
+          <div class="section-label">Add Study Session</div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Day</label>
+              <select class="form-input" id="session-day">
+                <option>Monday</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+                <option>Thursday</option>
+                <option>Friday</option>
+                <option>Saturday</option>
+                <option>Sunday</option>
+              </select>
+            </div>
+            <div class="form-group"><label class="form-label">Subject</label><input class="form-input"
+                id="session-subject" placeholder="e.g. Economics"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Start Time</label><input class="form-input" type="time"
+                id="session-start" value="09:00"></div>
+            <div class="form-group"><label class="form-label">End Time</label><input class="form-input" type="time"
+                id="session-end" value="10:00"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Topic / Notes</label><input class="form-input"
+                id="session-topic" placeholder="e.g. Lecture Review &amp; Notes"></div>
+            <div class="form-group" style="display:flex;align-items:flex-end"><button class="btn btn-primary"
+                style="width:100%" onclick="addSession()">+ Add Session</button></div>
+          </div>
+        </div>
+        <div id="schedule-by-day"></div>
+      </div>
+
+      <!-- TIMER -->
+      <div class="page" id="page-timer">
+        <div class="grid-2">
+          <div class="card"
+            style="display:flex;align-items:center;justify-content:center;min-height:380px;position:relative">
+
+            <!-- SETUP VIEW -->
+            <div id="pomo-setup-view" style="text-align:center;width:100%">
+              <div
+                style="display:inline-flex;border:1px solid var(--border);border-radius:8px;background:var(--surface2);overflow:hidden;margin-bottom:20px;box-shadow:var(--shadow)">
+                <div
+                  style="padding:20px 30px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid var(--border);width:120px">
+                  <div
+                    style="font-size:48px;font-weight:400;font-family:var(--font-head);line-height:1;color:var(--text)"
+                    id="pomo-setup-time">30</div>
+                  <div style="font-size:14px;color:var(--muted);margin-top:4px">mins</div>
                 </div>
-                <div class="layout-card" id="lc-hover" onclick="applySidebarLayout('hover',this)">
-                  <div class="layout-preview-box"><div class="lpb-sidebar narrow"></div><div class="lpb-main"></div></div>
-                  <div class="layout-card-label">Hover</div><div class="layout-card-desc">Expand on hover</div>
+                <div style="display:flex;flex-direction:column;width:40px">
+                  <button onclick="adjustPomoTime(5)"
+                    style="flex:1;padding:0;border:none;border-bottom:1px solid var(--border);background:transparent;cursor:pointer;color:var(--text);font-size:16px;display:flex;align-items:center;justify-content:center;transition:background 0.2s"
+                    onmouseover="this.style.background='var(--surface3)'"
+                    onmouseout="this.style.background='transparent'">ᐱ</button>
+                  <button onclick="adjustPomoTime(-5)"
+                    style="flex:1;padding:0;border:none;background:transparent;cursor:pointer;color:var(--text);font-size:16px;display:flex;align-items:center;justify-content:center;transition:background 0.2s"
+                    onmouseover="this.style.background='var(--surface3)'"
+                    onmouseout="this.style.background='transparent'">ᐯ</button>
                 </div>
-                <div class="layout-card" id="lc-collapsed" onclick="applySidebarLayout('collapsed',this)">
-                  <div class="layout-preview-box"><div class="lpb-sidebar tiny"></div><div class="lpb-main"></div></div>
-                  <div class="layout-card-label">Collapsed</div><div class="layout-card-desc">Icons only</div>
+              </div>
+
+              <div style="font-size:15px;margin-bottom:16px;font-weight:500" id="pomo-break-info">You'll have 1 break.
+              </div>
+
+              <label
+                style="display:inline-flex;align-items:center;gap:8px;cursor:pointer;margin-bottom:24px;font-size:15px">
+                <input type="checkbox" id="pomo-skip-breaks"
+                  style="width:18px;height:18px;accent-color:var(--text);cursor:pointer" onchange="updateBreakInfo()">
+                Skip breaks
+              </label>
+              <br>
+              <button class="btn"
+                style="background:var(--surface3);border:none;color:var(--text);padding:10px 24px;font-size:15px;border-radius:6px;gap:10px;font-weight:600"
+                onclick="startFocusSession()">
+                <span style="font-size:18px">▶</span> Start focus session
+              </button>
+            </div>
+
+            <!-- RUNNING VIEW -->
+            <div id="pomo-running-view" style="display:none;width:100%;height:100%;flex-direction:column">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                <div style="font-weight:600;font-size:14px" id="pomo-period-info">Focus period (1 of 2)</div>
+                <button style="background:none;border:none;color:var(--text);cursor:pointer;font-size:18px">↗</button>
+              </div>
+
+              <div
+                style="position:relative;width:220px;height:220px;margin:20px auto;display:flex;align-items:center;justify-content:center">
+                <svg width="220" height="220" viewBox="0 0 220 220"
+                  style="position:absolute;top:0;left:0;transform:rotate(-90deg)">
+                  <circle cx="110" cy="110" r="100" fill="none" stroke="var(--surface3)" stroke-width="12"
+                    stroke-dasharray="4 16" />
+                  <circle id="pomo-circle-prog" cx="110" cy="110" r="100" fill="none" stroke="var(--text)"
+                    stroke-width="12" stroke-dasharray="628" stroke-dashoffset="0"
+                    style="transition:stroke-dashoffset 1s linear" />
+                </svg>
+                <div style="text-align:center;position:relative;z-index:2">
+                  <div
+                    style="font-size:56px;font-family:var(--font-head);font-weight:400;line-height:1;display:inline-block"
+                    id="pomo-run-time">20</div>
+                  <span style="font-size:24px;color:var(--muted);margin-left:2px" id="pomo-run-unit">min</span>
                 </div>
+              </div>
+
+              <div style="display:flex;justify-content:center;gap:16px;margin-top:auto">
+                <button class="pomo-btn" id="pomo-pause-btn" onclick="toggleFocusSession()"
+                  style="width:44px;height:44px;font-size:16px;background:var(--surface3);border:none">⏸</button>
+                <button class="pomo-btn" onclick="stopFocusSession()"
+                  style="width:44px;height:44px;font-size:16px;background:var(--surface3);border:none">⏹</button>
+              </div>
+
+              <div style="text-align:center;margin-top:16px;font-size:13px;color:var(--muted)" id="pomo-up-next">
+                Up next: <span style="font-weight:600;color:var(--text)">5 min break</span>
+              </div>
+            </div>
+
+          </div>
+          <div class="card">
+            <div class="card-title" style="margin-bottom:16px">📊 Today's Sessions</div>
+            <div id="pomo-log">
+              <div class="empty">
+                <div class="empty-icon">⏱️</div>
+                <div class="empty-text">Complete a session to log it</div>
+              </div>
+            </div>
+            <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
+              <div style="display:flex;justify-content:space-between;font-size:14px">
+                <span style="color:var(--muted)">Sessions today</span><span id="pomo-count">0 / 4</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:14px;margin-top:8px">
+                <span style="color:var(--muted)">Focus time</span><span id="pomo-total-time">0 min</span>
+              </div>
+            </div>
+            <div class="card-title" style="margin:20px 0 12px">📝 Current Task</div>
+            <input class="form-input" id="pomo-task-input" placeholder="What are you working on?">
+          </div>
+        </div>
+      </div>
+
+      <!-- HABITS -->
+      <div class="page" id="page-habits">
+        <div class="card">
+          <div class="section-label">Add Habit</div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Habit Name</label><input class="form-input"
+                id="habit-name" placeholder="e.g. 💧 Drink water"></div>
+            <div class="form-group"><label class="form-label">Category</label>
+              <select class="form-input" id="habit-cat">
+                <option>Health</option>
+                <option>Study</option>
+                <option>Fitness</option>
+                <option>Mindfulness</option>
+                <option>Sleep</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="addHabit()">+ Add Habit</button>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Today's Habits</div>
+              <div id="habits-pct"
+                style="font-family:var(--font-head);font-size:18px;font-weight:700;color:var(--green)">0%</div>
+            </div>
+            <div class="progress-wrap" style="margin-bottom:16px">
+              <div class="progress-bg">
+                <div class="progress-fill" id="habits-bar" style="width:0%"></div>
+              </div>
+            </div>
+            <div id="habits-list"></div>
+          </div>
+          <div class="card">
+            <div class="card-title" style="margin-bottom:16px">🔥 Streaks & Stats</div>
+            <div id="habits-stats">
+              <div class="empty">
+                <div class="empty-icon">🌱</div>
+                <div class="empty-text">No habits yet</div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
 
+      <!-- KNOWLEDGE HUB -->
+      <div class="page" id="page-knowledge">
+        <div class="card">
+          <div class="section-label">Capture a Note / Resource</div>
+          <div class="form-group"><label class="form-label">Title</label><input class="form-input" id="note-title"
+              placeholder="e.g. Exam prep strategy"></div>
+          <div class="form-group"><label class="form-label">Content</label><textarea class="form-input"
+              id="note-content" rows="3" placeholder="Write your notes, links, or ideas here..."></textarea></div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Topic / Tag</label><input class="form-input" id="note-tag"
+                placeholder="e.g. Psychology"></div>
+            <div class="form-group"><label class="form-label">Type</label>
+              <select class="form-input" id="note-type">
+                <option>Note</option>
+                <option>Resource</option>
+                <option>Idea</option>
+                <option>Summary</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="addNote()">+ Save Note</button>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Knowledge Inbox</div>
+            <input class="form-input" id="note-search" placeholder="🔍 Search..."
+              style="width:200px;padding:6px 10px;font-size:13px" oninput="renderNotes()">
+          </div>
+          <div id="notes-list"></div>
+        </div>
+      </div>
+
+      <!-- CANVAS (DRAWING) -->
+      <div class="page" id="page-draw">
+        <div class="card"
+          style="padding:0;overflow:hidden;display:flex;flex-direction:column;height:calc(100vh - 120px)">
+          <!-- Toolbar -->
+          <div
+            style="display:flex;align-items:center;padding:10px 16px;border-bottom:1px solid var(--border);background:var(--surface);gap:12px;overflow-x:auto">
+            <button class="btn btn-sm" onclick="canvasUndo()" title="Undo">↶</button>
+            <button class="btn btn-sm" onclick="canvasRedo()" title="Redo">↷</button>
+            <div style="width:1px;height:24px;background:var(--border);margin:0 4px"></div>
+
+            <button class="btn btn-sm canvas-tool active" id="tool-pen" onclick="setCanvasTool('pen')" title="Pen">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                <path d="M2 2l7.586 7.586"></path>
+                <circle cx="11" cy="11" r="2"></circle>
+              </svg> Pen
+            </button>
+            <button class="btn btn-sm canvas-tool" id="tool-highlighter" onclick="setCanvasTool('highlighter')"
+              title="Highlighter">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                <path d="M2 2l7.586 7.586"></path>
+              </svg> High
+            </button>
+            <button class="btn btn-sm canvas-tool" id="tool-eraser" onclick="setCanvasTool('eraser')" title="Eraser">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M20 20H7L3 16C2.5 15.5 2.5 14.5 3 14L13 4C13.5 3.5 14.5 3.5 15 4L20 9C20.5 9.5 20.5 10.5 20 11L11 20">
+                </path>
+                <path d="M16 8L10 14"></path>
+              </svg> Eraser
+            </button>
+
+            <div style="width:1px;height:24px;background:var(--border);margin:0 4px"></div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <span style="font-size:11px;color:var(--muted)">Size</span>
+              <input type="range" id="canvas-size" min="1" max="50" value="2" onchange="updateCanvasSize(this.value)"
+                style="width:60px;accent-color:var(--text)">
+            </div>
+
+            <div style="width:1px;height:24px;background:var(--border);margin:0 4px"></div>
+
+            <div style="display:flex;gap:8px" id="canvas-colors">
+              <button class="canvas-color active"
+                style="width:20px;height:20px;border-radius:50%;background:#000000;border:2px solid var(--surface);box-shadow:0 0 0 1px var(--green)"
+                onclick="setCanvasColor('#000000', this)"></button>
+              <button class="canvas-color"
+                style="width:20px;height:20px;border-radius:50%;background:#ef4444;border:2px solid var(--surface);box-shadow:0 0 0 1px var(--border)"
+                onclick="setCanvasColor('#ef4444', this)"></button>
+              <button class="canvas-color"
+                style="width:20px;height:20px;border-radius:50%;background:#3b82f6;border:2px solid var(--surface);box-shadow:0 0 0 1px var(--border)"
+                onclick="setCanvasColor('#3b82f6', this)"></button>
+              <button class="canvas-color"
+                style="width:20px;height:20px;border-radius:50%;background:#22c55e;border:2px solid var(--surface);box-shadow:0 0 0 1px var(--border)"
+                onclick="setCanvasColor('#22c55e', this)"></button>
+              <button class="canvas-color"
+                style="width:20px;height:20px;border-radius:50%;background:#eab308;border:2px solid var(--surface);box-shadow:0 0 0 1px var(--border)"
+                onclick="setCanvasColor('#eab308', this)"></button>
+            </div>
+
+            <div style="flex:1"></div>
+            <input type="file" id="canvas-img-upload" accept="image/*" style="display:none"
+              onchange="insertCanvasImage(event)">
+            <button class="btn btn-sm" onclick="document.getElementById('canvas-img-upload').click()"
+              title="Insert Image">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg> Image
+            </button>
+            <button class="btn btn-sm" onclick="saveCanvas()" title="Save">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                <polyline points="7 3 7 8 15 8"></polyline>
+              </svg> Save
+            </button>
+            <button class="btn btn-sm" onclick="clearCanvas()" title="Clear">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              </svg> Clear
+            </button>
+          </div>
+          <!-- Canvas -->
+          <div style="flex:1;background:#fff;position:relative;overflow:hidden" id="canvas-container">
+            <canvas id="drawing-canvas" style="cursor:crosshair;touch-action:none;display:block"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- BUDGET -->
+      <div class="page" id="page-budget">
+        <div class="budget-summary">
+          <div class="budget-card">
+            <div class="budget-amount income" id="b-income">₹0</div>
+            <div class="budget-lbl">Total Income</div>
+          </div>
+          <div class="budget-card">
+            <div class="budget-amount expense" id="b-expense">₹0</div>
+            <div class="budget-lbl">Total Expenses</div>
+          </div>
+          <div class="budget-card">
+            <div class="budget-amount balance" id="b-balance">₹0</div>
+            <div class="budget-lbl">Balance</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="section-label">Add Transaction</div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Description</label><input class="form-input" id="txn-desc"
+                placeholder="e.g. Groceries"></div>
+            <div class="form-group"><label class="form-label">Amount (₹)</label><input class="form-input" type="number"
+                id="txn-amount" placeholder="500" min="0"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Category</label>
+              <select class="form-input" id="txn-cat">
+                <option>Housing</option>
+                <option>Groceries</option>
+                <option>Transport</option>
+                <option>Dining</option>
+                <option>Books</option>
+                <option>Subscriptions</option>
+                <option>Savings</option>
+                <option>Entertainment</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group"><label class="form-label">Type</label>
+              <select class="form-input" id="txn-type">
+                <option value="expense">Expense</option>
+                <option value="income">Income</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Date</label><input class="form-input" type="date"
+                id="txn-date"></div>
+            <div class="form-group" style="display:flex;align-items:flex-end"><button class="btn btn-primary"
+                style="width:100%" onclick="addTransaction()">+ Add Transaction</button></div>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-title" style="margin-bottom:16px">📊 By Category</div>
+            <div id="budget-categories"></div>
+          </div>
+          <div class="card">
+            <div class="card-title" style="margin-bottom:16px">📄 Transactions</div>
+            <div id="budget-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SETTINGS -->
+      <div class="page" id="page-settings">
+        <div class="settings-layout">
+          <nav class="settings-sidenav">
+            <div class="s-nav-item active" onclick="switchSettings('account',this)">Account</div>
+            <div class="s-nav-item" onclick="switchSettings('theme',this)">Theme & Colors</div>
+            <div class="s-nav-item" onclick="switchSettings('language',this)">Language</div>
+            <div class="s-nav-item" onclick="switchSettings('layout',this)">Layout</div>
+            <div class="s-nav-item s-logout" onclick="authLogout()">Logout</div>
+          </nav>
+          <div class="settings-content">
+
+            <!-- Account -->
+            <div class="settings-section active" id="ss-account">
+              <div class="settings-section-title">Account</div>
+              <div class="card">
+                <div id="s-account-display">
+                  <div class="empty">
+                    <div class="empty-icon">👤</div>
+                    <div class="empty-text">Not signed in</div>
+                  </div>
+                </div>
+              </div>
+              <div class="card" id="s-subscription-card">
+                <div class="settings-group-title">Subscription</div>
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <div>
+                    <div style="font-weight:600">Free Plan</div>
+                    <div style="font-size:12px;color:var(--muted);margin-top:3px">3 items per category · Upgrade for
+                      unlimited</div>
+                  </div>
+                  <button class="btn btn-primary btn-sm" onclick="openUpgradeModal()">⭐ Upgrade</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Theme -->
+            <div class="settings-section" id="ss-theme">
+              <div class="settings-section-title">Theme & Colors</div>
+              <div class="card">
+                <div class="settings-group-title">Appearance</div>
+                <div class="theme-grid">
+                  <div class="theme-card selected" id="tc-light" onclick="applyTheme('light',this)">
+                    <div class="theme-preview-box tpb-light">
+                      <div class="tpb-bar"></div>
+                      <div class="tpb-line"></div>
+                      <div class="tpb-line"></div>
+                    </div>
+                    <div class="theme-card-label">☀️ Light</div>
+                  </div>
+                  <div class="theme-card" id="tc-dark" onclick="applyTheme('dark',this)">
+                    <div class="theme-preview-box tpb-dark">
+                      <div class="tpb-bar"></div>
+                      <div class="tpb-line"></div>
+                      <div class="tpb-line"></div>
+                    </div>
+                    <div class="theme-card-label">🌙 Dark</div>
+                  </div>
+                  <div class="theme-card" id="tc-system" onclick="applyTheme('system',this)">
+                    <div class="theme-preview-box tpb-system"></div>
+                    <div class="theme-card-label">💻 System</div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="settings-group-title">Accent Color</div>
+                <div class="accent-grid">
+                  <div class="accent-card selected" id="ac-default" onclick="applyAccent('default',this)">
+                    <div class="accent-swatch" style="background:linear-gradient(135deg,#2ba869,#15803d)"></div>
+                    <div class="accent-card-label">Green</div>
+                  </div>
+                  <div class="accent-card" id="ac-red" onclick="applyAccent('red',this)">
+                    <div class="accent-swatch" style="background:linear-gradient(135deg,#dc2626,#ef4444)"></div>
+                    <div class="accent-card-label">Red</div>
+                  </div>
+                  <div class="accent-card" id="ac-blue" onclick="applyAccent('blue',this)">
+                    <div class="accent-swatch" style="background:linear-gradient(135deg,#2563eb,#3b82f6)"></div>
+                    <div class="accent-card-label">Blue</div>
+                  </div>
+                  <div class="accent-card" id="ac-purple" onclick="applyAccent('purple',this)">
+                    <div class="accent-swatch" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)"></div>
+                    <div class="accent-card-label">Purple</div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="settings-group-title">Dark + Color Combos</div>
+                <div class="combo-grid">
+                  <div class="combo-card" id="cc-dark-default" onclick="applyCombo('dark','default',this)">
+                    <div class="combo-preview" style="background:#141414;border-color:#3b9a6e"><span
+                        style="color:#4dbf8a;font-size:18px">●</span></div>
+                    <div class="combo-label">Dark+Green</div>
+                  </div>
+                  <div class="combo-card" id="cc-dark-red" onclick="applyCombo('dark','red',this)">
+                    <div class="combo-preview" style="background:#141414;border-color:#e05555"><span
+                        style="color:#f08080;font-size:18px">●</span></div>
+                    <div class="combo-label">Dark+Red</div>
+                  </div>
+                  <div class="combo-card" id="cc-dark-blue" onclick="applyCombo('dark','blue',this)">
+                    <div class="combo-preview" style="background:#141414;border-color:#4a90d9"><span
+                        style="color:#7ab3e8;font-size:18px">●</span></div>
+                    <div class="combo-label">Dark+Blue</div>
+                  </div>
+                  <div class="combo-card" id="cc-dark-purple" onclick="applyCombo('dark','purple',this)">
+                    <div class="combo-preview" style="background:#141414;border-color:#9b59b6"><span
+                        style="color:#c39bd3;font-size:18px">●</span></div>
+                    <div class="combo-label">Dark+Purple</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Language -->
+            <div class="settings-section" id="ss-language">
+              <div class="settings-section-title">Language</div>
+              <div class="card">
+                <div class="settings-group-title">Display Language</div>
+                <select class="form-input" id="lang-select" onchange="applyLanguage(this.value)"
+                  style="max-width:280px">
+                  <option value="en">🇬🇧 English</option>
+                  <option value="hi">🇮🇳 हिंदी (Hindi)</option>
+                  <option value="ta">🇮🇳 தமிழ் (Tamil)</option>
+                  <option value="te">🇮🇳 తెలుగు (Telugu)</option>
+                  <option value="mr">🇮🇳 मराठी (Marathi)</option>
+                  <option value="bn">🇮🇳 বাংলা (Bengali)</option>
+                </select>
+                <p style="margin-top:12px;font-size:12px;color:var(--muted)">Interface language for menus and labels.
+                </p>
+              </div>
+            </div>
+
+            <!-- Layout -->
+            <div class="settings-section" id="ss-layout">
+              <div class="settings-section-title">Sidebar & Layout</div>
+              <div class="card">
+                <div class="settings-group-title">Sidebar Behavior</div>
+                <div class="layout-grid">
+                  <div class="layout-card selected" id="lc-fixed" onclick="applySidebarLayout('fixed',this)">
+                    <div class="layout-preview-box">
+                      <div class="lpb-sidebar wide"></div>
+                      <div class="lpb-main"></div>
+                    </div>
+                    <div class="layout-card-label">Fixed</div>
+                    <div class="layout-card-desc">Always visible</div>
+                  </div>
+                  <div class="layout-card" id="lc-hover" onclick="applySidebarLayout('hover',this)">
+                    <div class="layout-preview-box">
+                      <div class="lpb-sidebar narrow"></div>
+                      <div class="lpb-main"></div>
+                    </div>
+                    <div class="layout-card-label">Hover</div>
+                    <div class="layout-card-desc">Expand on hover</div>
+                  </div>
+                  <div class="layout-card" id="lc-collapsed" onclick="applySidebarLayout('collapsed',this)">
+                    <div class="layout-preview-box">
+                      <div class="lpb-sidebar tiny"></div>
+                      <div class="lpb-main"></div>
+                    </div>
+                    <div class="layout-card-label">Collapsed</div>
+                    <div class="layout-card-desc">Icons only</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- AUTH OVERLAY -->
+  <div class="auth-overlay" id="auth-overlay" style="display:none;">
+    <div class="auth-box" style="position:relative">
+      <button class="modal-close" style="position:absolute;top:16px;right:16px;"
+        onclick="document.getElementById('auth-overlay').style.display='none'">✕</button>
+      <img src="logo.png" alt="Crea" class="auth-logo-img">
+      <div class="auth-title crea-name">CREA</div>
+      <div class="auth-subtitle">Your Day, Organized — Sign in to sync your data</div>
+
+      <!-- Google Sign-in -->
+      <button class="btn-google" id="btn-google-signin" onclick="authWithGoogle()">
+        <svg width="18" height="18" viewBox="0 0 48 48" style="flex-shrink:0">
+          <path fill="#EA4335"
+            d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
+          <path fill="#4285F4"
+            d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
+          <path fill="#FBBC05"
+            d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
+          <path fill="#34A853"
+            d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.36-8.16 2.36-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
+          <path fill="none" d="M0 0h48v48H0z" />
+        </svg>
+        Continue with Google
+      </button>
+
+      <div class="auth-divider"><span>or use email</span></div>
+
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" id="auth-email" placeholder="you@example.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-input" id="auth-pass" placeholder="••••••••">
+      </div>
+      <div class="form-row" style="margin-top:20px">
+        <button class="btn btn-primary" style="width:100%" onclick="authLogin()">Login</button>
+        <button class="btn" style="width:100%" onclick="authSignup()">Sign Up</button>
+      </div>
+      <div id="auth-error" class="auth-error"></div>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal">
+      <div class="modal-title"><span id="modal-title">Info</span><button class="modal-close"
+          onclick="closeModal()">✕</button></div>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- UPGRADE MODAL -->
+  <div class="modal-overlay" id="upgrade-modal">
+    <div class="modal upgrade-modal-box">
+      <div class="modal-title">
+        <span>⭐ Upgrade to Crea Premium</span>
+        <button class="modal-close" onclick="closeUpgradeModal()">✕</button>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:24px">Unlock unlimited tasks, AI features, advanced
+        analytics and more.</p>
+
+      <!-- Monthly -->
+      <div class="pricing-card" id="plan-monthly" onclick="selectPlan('monthly')">
+        <div class="pricing-left">
+          <div class="pricing-name">Monthly</div>
+          <div class="pricing-badge trial-badge">14-day free trial</div>
+        </div>
+        <div class="pricing-price">
+          <span class="price-inr">₹200<span class="price-per">/mo</span></span>
+          <span class="price-usd">$2/mo</span>
+        </div>
+        <div class="pricing-pill">Most Flexible</div>
+      </div>
+
+      <!-- Yearly -->
+      <div class="pricing-card popular" id="plan-yearly" onclick="selectPlan('yearly')">
+        <div class="pricing-left">
+          <div class="pricing-name">Yearly</div>
+          <div class="pricing-badge save-badge">Save 17% — Best Value</div>
+        </div>
+        <div class="pricing-price">
+          <span class="price-inr">₹2,400<span class="price-per">/yr</span></span>
+          <span class="price-usd">$24/yr</span>
+        </div>
+        <div class="pricing-pill popular-pill">Most Popular</div>
+      </div>
+
+      <!-- Lifetime -->
+      <div class="pricing-card" id="plan-lifetime" onclick="selectPlan('lifetime')">
+        <div class="pricing-left">
+          <div class="pricing-name">Lifetime</div>
+          <div class="pricing-badge lifetime-badge">Pay once, use forever</div>
+        </div>
+        <div class="pricing-price">
+          <span class="price-inr">₹4,500<span class="price-per"> once</span></span>
+          <span class="price-usd">$45</span>
+        </div>
+        <div class="pricing-pill limited-pill">Limited Offer</div>
+      </div>
+
+      <div class="upgrade-total" id="upgrade-total">Select a plan above to continue</div>
+      <button class="btn btn-primary" style="width:100%;margin-top:14px;padding:13px;font-size:15px" id="btn-subscribe"
+        onclick="subscribePlan()" disabled>Get Premium</button>
+      <p style="font-size:11px;color:var(--muted);text-align:center;margin-top:10px">Secure checkout · Cancel anytime ·
+        No hidden fees</p>
+    </div>
+  </div>
+
+  <!-- FOOTER MODAL (Habitica Style) -->
+  <div class="modal-overlay" id="footer-modal">
+    <div class="footer-modal-content">
+      <button class="modal-close" onclick="closeFooterModal()">✕</button>
+
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-col-title">Product</div>
+          <a href="#" class="footer-link">iOS App</a>
+          <a href="#" class="footer-link">Android App</a>
+          <a href="#" class="footer-link">Group Plans</a>
+          <a href="#" class="footer-link">How It Works</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <a href="#" class="footer-link">Contact Us</a>
+          <a href="#" class="footer-link">Press Kit</a>
+          <a href="#" class="footer-link">Blog</a>
+          <a href="#" class="footer-link">News</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Community</div>
+          <a href="#" class="footer-link">Guidelines</a>
+          <a href="#" class="footer-link">Hall of Heroes</a>
+          <a href="#" class="footer-link">Contributing</a>
+          <a href="#" class="footer-link">Translations</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Support</div>
+          <a href="#" class="footer-link">FAQ</a>
+          <a href="#" class="footer-link">Report a Bug</a>
+          <a href="#" class="footer-link">Request Feature</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Social</div>
+          <a href="#" class="footer-link">📸 Instagram</a>
+          <a href="#" class="footer-link">🐦 Twitter</a>
+          <a href="#" class="footer-link">📘 Facebook</a>
+          <a href="#" class="footer-link">🎥 YouTube</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">© 2026 Crea. All rights reserved.</div>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
         </div>
       </div>
     </div>
-
   </div>
-</div>
 
-<!-- AUTH OVERLAY -->
-<div class="auth-overlay" id="auth-overlay" style="display:none;">
-  <div class="auth-box" style="position:relative">
-    <button class="modal-close" style="position:absolute;top:16px;right:16px;" onclick="document.getElementById('auth-overlay').style.display='none'">✕</button>
-    <img src="logo.png" alt="Crea" class="auth-logo-img">
-    <div class="auth-title crea-name">CREA</div>
-    <div class="auth-subtitle">Your Day, Organized — Sign in to sync your data</div>
-
-    <!-- Google Sign-in -->
-    <button class="btn-google" id="btn-google-signin" onclick="authWithGoogle()">
-      <svg width="18" height="18" viewBox="0 0 48 48" style="flex-shrink:0"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.36-8.16 2.36-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/><path fill="none" d="M0 0h48v48H0z"/></svg>
-      Continue with Google
-    </button>
-
-    <div class="auth-divider"><span>or use email</span></div>
-
-    <div class="form-group">
-      <label class="form-label">Email</label>
-      <input type="email" class="form-input" id="auth-email" placeholder="you@example.com">
-    </div>
-    <div class="form-group">
-      <label class="form-label">Password</label>
-      <input type="password" class="form-input" id="auth-pass" placeholder="••••••••">
-    </div>
-    <div class="form-row" style="margin-top:20px">
-      <button class="btn btn-primary" style="width:100%" onclick="authLogin()">Login</button>
-      <button class="btn" style="width:100%" onclick="authSignup()">Sign Up</button>
-    </div>
-    <div id="auth-error" class="auth-error"></div>
-  </div>
-</div>
-
-<!-- MODAL -->
-<div class="modal-overlay" id="modal">
-  <div class="modal">
-    <div class="modal-title"><span id="modal-title">Info</span><button class="modal-close" onclick="closeModal()">✕</button></div>
-    <div id="modal-body"></div>
-  </div>
-</div>
-
-<!-- UPGRADE MODAL -->
-<div class="modal-overlay" id="upgrade-modal">
-  <div class="modal upgrade-modal-box">
-    <div class="modal-title">
-      <span>⭐ Upgrade to Crea Premium</span>
-      <button class="modal-close" onclick="closeUpgradeModal()">✕</button>
-    </div>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:24px">Unlock unlimited tasks, AI features, advanced analytics and more.</p>
-
-    <!-- Monthly -->
-    <div class="pricing-card" id="plan-monthly" onclick="selectPlan('monthly')">
-      <div class="pricing-left">
-        <div class="pricing-name">Monthly</div>
-        <div class="pricing-badge trial-badge">14-day free trial</div>
-      </div>
-      <div class="pricing-price">
-        <span class="price-inr">₹200<span class="price-per">/mo</span></span>
-        <span class="price-usd">$2/mo</span>
-      </div>
-      <div class="pricing-pill">Most Flexible</div>
-    </div>
-
-    <!-- Yearly -->
-    <div class="pricing-card popular" id="plan-yearly" onclick="selectPlan('yearly')">
-      <div class="pricing-left">
-        <div class="pricing-name">Yearly</div>
-        <div class="pricing-badge save-badge">Save 17% — Best Value</div>
-      </div>
-      <div class="pricing-price">
-        <span class="price-inr">₹2,400<span class="price-per">/yr</span></span>
-        <span class="price-usd">$24/yr</span>
-      </div>
-      <div class="pricing-pill popular-pill">Most Popular</div>
-    </div>
-
-    <!-- Lifetime -->
-    <div class="pricing-card" id="plan-lifetime" onclick="selectPlan('lifetime')">
-      <div class="pricing-left">
-        <div class="pricing-name">Lifetime</div>
-        <div class="pricing-badge lifetime-badge">Pay once, use forever</div>
-      </div>
-      <div class="pricing-price">
-        <span class="price-inr">₹4,500<span class="price-per"> once</span></span>
-        <span class="price-usd">$45</span>
-      </div>
-      <div class="pricing-pill limited-pill">Limited Offer</div>
-    </div>
-
-    <div class="upgrade-total" id="upgrade-total">Select a plan above to continue</div>
-    <button class="btn btn-primary" style="width:100%;margin-top:14px;padding:13px;font-size:15px" id="btn-subscribe" onclick="subscribePlan()" disabled>Get Premium</button>
-    <p style="font-size:11px;color:var(--muted);text-align:center;margin-top:10px">Secure checkout · Cancel anytime · No hidden fees</p>
-  </div>
-</div>
-
-<!-- FOOTER MODAL (Habitica Style) -->
-<div class="modal-overlay" id="footer-modal">
-  <div class="footer-modal-content">
-    <button class="modal-close" onclick="closeFooterModal()">✕</button>
-    
-    <div class="footer-grid">
-      <div class="footer-col">
-        <div class="footer-col-title">Product</div>
-        <a href="#" class="footer-link">iOS App</a>
-        <a href="#" class="footer-link">Android App</a>
-        <a href="#" class="footer-link">Group Plans</a>
-        <a href="#" class="footer-link">How It Works</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Company</div>
-        <a href="#" class="footer-link">Contact Us</a>
-        <a href="#" class="footer-link">Press Kit</a>
-        <a href="#" class="footer-link">Blog</a>
-        <a href="#" class="footer-link">News</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Community</div>
-        <a href="#" class="footer-link">Guidelines</a>
-        <a href="#" class="footer-link">Hall of Heroes</a>
-        <a href="#" class="footer-link">Contributing</a>
-        <a href="#" class="footer-link">Translations</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Support</div>
-        <a href="#" class="footer-link">FAQ</a>
-        <a href="#" class="footer-link">Report a Bug</a>
-        <a href="#" class="footer-link">Request Feature</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Social</div>
-        <a href="#" class="footer-link">📸 Instagram</a>
-        <a href="#" class="footer-link">🐦 Twitter</a>
-        <a href="#" class="footer-link">📘 Facebook</a>
-        <a href="#" class="footer-link">🎥 YouTube</a>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <div class="footer-copyright">© 2026 Crea. All rights reserved.</div>
-      <div class="footer-legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
-<script src="security.js"></script>
-<script src="api.js"></script>
-<script src="crea.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+  <script src="js/security.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/crea.js"></script>
 </body>
+
 </html>
