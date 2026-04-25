@@ -75,6 +75,7 @@ class RateLimiter {
   }
   /** Shows a toast and returns false if rate-limited, otherwise true. */
   guard() {
+    if (typeof isAdmin !== 'undefined' && isAdmin) return true;
     const r = this.check();
     if (!r.ok) {
       showToast(`⏳ ${this.label} — please wait ${r.waitSec}s`, 'warn');
@@ -86,7 +87,7 @@ class RateLimiter {
 
 // ─── RATE LIMITER INSTANCES ───────────────────────────────
 const RL = {
-  auth:    new RateLimiter(5,  5 * 60_000, 'Login/Signup'),    // 5 per 5 min
+  auth:    new RateLimiter(5,  1_000,     'Login/Signup'),    // 5 per 1 second (Testing mode)
   ai:      new RateLimiter(5,  60_000,     'AI endpoint'),      // 5 per minute
   addItem: new RateLimiter(30, 60_000,     'Adding items'),     // 30 per minute
 };
