@@ -22,7 +22,9 @@
   <meta name="description" content="Crea: the all-in-one planner for assignments, habits, timer, budget and more.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400&display=swap"
+    rel="stylesheet">
   <link href="index.css" rel="stylesheet">
 
 </head>
@@ -69,65 +71,45 @@
         <span>Courses</span>
       </div>
       <div class="nav-item" onclick="showPage('study')">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-          <line x1="16" y1="2" x2="16" y2="6"></line>
-          <line x1="8" y1="2" x2="8" y2="6"></line>
-          <line x1="3" y1="10" x2="21" y2="10"></line>
-        </svg>
-        <span>Study Planner</span>
+      <div class="nav-item active" onclick="showPage('dashboard')" id="nav-dashboard">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        <span data-i18n="nav-dashboard">Dashboard</span>
       </div>
-      <div class="nav-item" onclick="showPage('timer')">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <polyline points="12 6 12 12 16 14"></polyline>
-        </svg>
-        <span>Timer</span>
+      <div class="nav-item" onclick="showPage('assignments')" id="nav-assignments">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+        <span data-i18n="nav-assignments">Assignments</span>
       </div>
-      <div class="nav-item" onclick="showPage('habits')">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="20 6 9 17 4 12"></polyline>
-        </svg>
-        <span>Habits</span>
+      <div class="nav-item" onclick="showPage('courses')" id="nav-courses">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+        <span data-i18n="nav-courses">Courses</span>
       </div>
-      <div class="nav-item" onclick="showPage('knowledge')">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-        </svg>
-        <span>Knowledge Hub</span>
+      <div class="nav-item" onclick="showPage('study')" id="nav-study">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        <span data-i18n="nav-study">Study Planner</span>
       </div>
-      <div class="nav-item" onclick="showPage('draw')">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
-          <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
-          <path d="M2 2l7.586 7.586"></path>
-          <circle cx="11" cy="11" r="2"></circle>
-        </svg>
-        <span>Canvas</span>
+      <div class="nav-item" onclick="showPage('timer')" id="nav-timer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        <span data-i18n="nav-timer">Focus Timer</span>
       </div>
-      <div class="nav-item" onclick="showPage('budget')">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <line x1="12" y1="1" x2="12" y2="23"></line>
-          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-        </svg>
-        <span>Budget</span>
+      <div class="nav-item" onclick="showPage('habits')" id="nav-habits">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span data-i18n="nav-habits">Habit Tracker</span>
       </div>
-      <div class="nav-item" onclick="showPage('settings')">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="3"></circle>
-          <path
-            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
-          </path>
-        </svg>
-        <span>Settings</span>
+      <div class="nav-item" onclick="showPage('knowledge')" id="nav-knowledge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+        <span data-i18n="nav-knowledge">Knowledge Hub</span>
+      </div>
+      <div class="nav-item" onclick="showPage('draw')" id="nav-draw">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+        <span data-i18n="nav-draw">Canvas</span>
+      </div>
+      <div class="nav-item" onclick="showPage('budget')" id="nav-budget">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        <span data-i18n="nav-budget">Budget</span>
+      </div>
+      <div class="nav-item" onclick="showPage('settings')" id="nav-settings">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        <span data-i18n="nav-settings">Settings</span>
       </div>
       <div class="nav-item upgrade-nav" onclick="openUpgradeModal()" id="nav-upgrade">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -136,15 +118,21 @@
             points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
           </polygon>
         </svg>
-        <span>Go Premium</span>
+        <span data-i18n="nav-premium">Go Premium</span>
       </div>
     </nav>
     <div class="sidebar-footer">
       <div id="clock-sidebar">--:--</div>
       <div class="date-display" id="date-sidebar"></div>
+      <!-- DISABLED: 
       <button class="about-link-btn" onclick="openFooterModal()" title="About Crea">
-        <span>🔗</span> About & Links
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px">
+          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+        </svg> About & Links
       </button>
+      -->
     </div>
   </aside>
 
@@ -152,7 +140,12 @@
   <div class="main">
     <div class="topbar">
       <div style="display:flex;align-items:center;gap:12px">
-        <button class="mobile-menu-btn" onclick="toggleSidebarState()">☰</button>
+        <button class="mobile-menu-btn" onclick="toggleSidebarState()"><svg width="20" height="20" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg></button>
         <div class="crea-name" style="font-size:18px;">CREA</div>
         <div style="width:1px;height:18px;background:var(--border)"></div>
         <div class="page-title" id="topbar-title">Dashboard</div>
@@ -200,40 +193,57 @@
         <div class="stats-row">
           <div class="stat-card">
             <div class="stat-num" id="stat-tasks">0</div>
-            <div class="stat-label">Pending Tasks</div>
+            <div class="stat-label" data-i18n="stat-tasks">Pending Tasks</div>
           </div>
           <div class="stat-card">
             <div class="stat-num" id="stat-habits">0%</div>
-            <div class="stat-label">Habits Today</div>
+            <div class="stat-label" data-i18n="stat-habits">Habits Today</div>
           </div>
           <div class="stat-card">
             <div class="stat-num" id="stat-courses">0</div>
-            <div class="stat-label">Courses</div>
+            <div class="stat-label" data-i18n="stat-courses">Courses</div>
           </div>
           <div class="stat-card">
             <div class="stat-num" id="stat-balance">₹0</div>
-            <div class="stat-label">Budget Balance</div>
+            <div class="stat-label" data-i18n="stat-balance">Budget Balance</div>
           </div>
         </div>
         <div class="grid-2">
           <div class="card">
             <div class="card-header">
-              <div class="card-title">📋 Due Soon</div>
+              <div class="card-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  style="margin-right:8px;vertical-align:text-bottom">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg> <span data-i18n="card-due-soon">Due Soon</span></div>
             </div>
             <div id="dash-tasks">
               <div class="empty">
-                <div class="empty-icon">📭</div>
+                <div class="empty-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg></div>
                 <div class="empty-text">No tasks yet</div>
               </div>
             </div>
           </div>
           <div class="card">
             <div class="card-header">
-              <div class="card-title">✅ Today's Habits</div>
+              <div class="card-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  style="margin-right:8px;vertical-align:text-bottom">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg> <span data-i18n="card-habits-today">Today's Habits</span></div>
             </div>
             <div id="dash-habits">
               <div class="empty">
-                <div class="empty-icon">🌱</div>
+                <div class="empty-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8a7 7 0 0 1-7 7h-3z"></path>
+                    <path d="M9 20c0-4.5 3-7 3-7"></path>
+                  </svg></div>
                 <div class="empty-text">No habits yet</div>
               </div>
             </div>
@@ -241,11 +251,22 @@
         </div>
         <div class="card">
           <div class="card-header">
-            <div class="card-title">📅 Today's Study Sessions</div>
+            <div class="card-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                style="margin-right:8px;vertical-align:text-bottom">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg> <span data-i18n="card-study-today">Today's Study Sessions</span></div>
           </div>
           <div id="dash-sessions">
             <div class="empty">
-              <div class="empty-icon">📖</div>
+              <div class="empty-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg></div>
               <div class="empty-text">No sessions planned</div>
             </div>
           </div>
@@ -255,7 +276,7 @@
       <!-- ASSIGNMENTS -->
       <div class="page" id="page-assignments">
         <div class="card">
-          <div class="section-label">Add Assignment / Exam</div>
+          <div class="section-label" data-i18n="label-add-task">Add Assignment / Exam</div>
           <div class="form-row">
             <div class="form-group"><label class="form-label">Title</label><input class="form-input" id="task-title"
                 placeholder="e.g. Math Quiz Chapter 5"></div>
@@ -289,7 +310,7 @@
         </div>
         <div class="card">
           <div class="card-header">
-            <div class="card-title">All Tasks</div>
+            <div class="card-title" data-i18n="card-all-tasks">All Tasks</div>
             <div style="display:flex;gap:8px">
               <select class="form-input" id="filter-status" style="width:auto;padding:5px 10px;font-size:12px"
                 onchange="renderTasks()">
@@ -314,7 +335,7 @@
       <!-- COURSES -->
       <div class="page" id="page-courses">
         <div class="card">
-          <div class="section-label">Add Course</div>
+          <div class="section-label" data-i18n="label-add-course">Add Course</div>
           <div class="form-row">
             <div class="form-group"><label class="form-label">Course Name</label><input class="form-input"
                 id="course-name" placeholder="e.g. AP Physics"></div>
@@ -334,7 +355,7 @@
       <!-- STUDY PLANNER -->
       <div class="page" id="page-study">
         <div class="card">
-          <div class="section-label">Add Study Session</div>
+          <div class="section-label" data-i18n="label-add-session">Add Study Session</div>
           <div class="form-row">
             <div class="form-group"><label class="form-label">Day</label>
               <select class="form-input" id="session-day">
@@ -387,11 +408,17 @@
                   <button onclick="adjustPomoTime(5)"
                     style="flex:1;padding:0;border:none;border-bottom:1px solid var(--border);background:transparent;cursor:pointer;color:var(--text);font-size:16px;display:flex;align-items:center;justify-content:center;transition:background 0.2s"
                     onmouseover="this.style.background='var(--surface3)'"
-                    onmouseout="this.style.background='transparent'">ᐱ</button>
+                    onmouseout="this.style.background='transparent'"><svg width="14" height="14" viewBox="0 0 24 24"
+                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="18 15 12 9 6 15"></polyline>
+                    </svg></button>
                   <button onclick="adjustPomoTime(-5)"
                     style="flex:1;padding:0;border:none;background:transparent;cursor:pointer;color:var(--text);font-size:16px;display:flex;align-items:center;justify-content:center;transition:background 0.2s"
                     onmouseover="this.style.background='var(--surface3)'"
-                    onmouseout="this.style.background='transparent'">ᐯ</button>
+                    onmouseout="this.style.background='transparent'"><svg width="14" height="14" viewBox="0 0 24 24"
+                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg></button>
                 </div>
               </div>
 
@@ -408,15 +435,25 @@
               <button class="btn"
                 style="background:var(--surface3);border:none;color:var(--text);padding:10px 24px;font-size:15px;border-radius:6px;gap:10px;font-weight:600"
                 onclick="startFocusSession()">
-                <span style="font-size:18px">▶</span> Start focus session
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"
+                  style="margin-right:8px;vertical-align:middle">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg> Start focus session
               </button>
             </div>
 
             <!-- RUNNING VIEW -->
             <div id="pomo-running-view" style="display:none;width:100%;height:100%;flex-direction:column">
               <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-                <div style="font-weight:600;font-size:14px" id="pomo-period-info">Focus period (1 of 2)</div>
-                <button style="background:none;border:none;color:var(--text);cursor:pointer;font-size:18px">↗</button>
+                <div style="font-weight:600;font-size:14px" id="pomo-period-info" data-i18n="pomo-focus-period">Focus period</div>
+                <button style="background:none;border:none;color:var(--text);cursor:pointer;font-size:18px"><svg
+                    width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <polyline points="9 21 3 21 3 15"></polyline>
+                    <line x1="21" y1="3" x2="14" y2="10"></line>
+                    <line x1="3" y1="21" x2="10" y2="14"></line>
+                  </svg></button>
               </div>
 
               <div
@@ -439,9 +476,18 @@
 
               <div style="display:flex;justify-content:center;gap:16px;margin-top:auto">
                 <button class="pomo-btn" id="pomo-pause-btn" onclick="toggleFocusSession()"
-                  style="width:44px;height:44px;font-size:16px;background:var(--surface3);border:none">⏸</button>
+                  style="width:44px;height:44px;font-size:16px;background:var(--surface3);border:none;display:flex;align-items:center;justify-content:center">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="6" y="4" width="4" height="16"></rect>
+                    <rect x="14" y="4" width="4" height="16"></rect>
+                  </svg>
+                </button>
                 <button class="pomo-btn" onclick="stopFocusSession()"
-                  style="width:44px;height:44px;font-size:16px;background:var(--surface3);border:none">⏹</button>
+                  style="width:44px;height:44px;font-size:16px;background:var(--surface3);border:none;display:flex;align-items:center;justify-content:center">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="4" y="4" width="16" height="16"></rect>
+                  </svg>
+                </button>
               </div>
 
               <div style="text-align:center;margin-top:16px;font-size:13px;color:var(--muted)" id="pomo-up-next">
@@ -451,10 +497,20 @@
 
           </div>
           <div class="card">
-            <div class="card-title" style="margin-bottom:16px">📊 Today's Sessions</div>
+            <div class="card-title" style="margin-bottom:16px"><svg width="18" height="18" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                style="margin-right:8px;vertical-align:text-bottom">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg> <span data-i18n="card-pomo-today">Today's Sessions</span></div>
             <div id="pomo-log">
               <div class="empty">
-                <div class="empty-icon">⏱️</div>
+                <div class="empty-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg></div>
                 <div class="empty-text">Complete a session to log it</div>
               </div>
             </div>
@@ -466,7 +522,12 @@
                 <span style="color:var(--muted)">Focus time</span><span id="pomo-total-time">0 min</span>
               </div>
             </div>
-            <div class="card-title" style="margin:20px 0 12px">📝 Current Task</div>
+            <div class="card-title" style="margin:20px 0 12px"><svg width="18" height="18" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                style="margin-right:8px;vertical-align:text-bottom">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+              </svg> Current Task</div>
             <input class="form-input" id="pomo-task-input" placeholder="What are you working on?">
           </div>
         </div>
@@ -475,7 +536,7 @@
       <!-- HABITS -->
       <div class="page" id="page-habits">
         <div class="card">
-          <div class="section-label">Add Habit</div>
+          <div class="section-label" data-i18n="label-add-habit">Add Habit</div>
           <div class="form-row">
             <div class="form-group"><label class="form-label">Habit Name</label><input class="form-input"
                 id="habit-name" placeholder="e.g. 💧 Drink water"></div>
@@ -495,7 +556,7 @@
         <div class="grid-2">
           <div class="card">
             <div class="card-header">
-              <div class="card-title">Today's Habits</div>
+              <div class="card-title" data-i18n="card-habits-today-2">Today's Habits</div>
               <div id="habits-pct"
                 style="font-family:var(--font-head);font-size:18px;font-weight:700;color:var(--green)">0%</div>
             </div>
@@ -507,10 +568,20 @@
             <div id="habits-list"></div>
           </div>
           <div class="card">
-            <div class="card-title" style="margin-bottom:16px">🔥 Streaks & Stats</div>
+            <div class="card-title" style="margin-bottom:16px"><svg width="18" height="18" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                style="margin-right:8px;vertical-align:text-bottom">
+                <path
+                  d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.5 2.5 6.5 1 1.5 1 3.5-.5 5-1.5 1.5-3 1.5-4.5 1.5z">
+                </path>
+              </svg> <span data-i18n="card-habits-stats">Streaks & Stats</span></div>
             <div id="habits-stats">
               <div class="empty">
-                <div class="empty-icon">🌱</div>
+                <div class="empty-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8a7 7 0 0 1-7 7h-3z"></path>
+                    <path d="M9 20c0-4.5 3-7 3-7"></path>
+                  </svg></div>
                 <div class="empty-text">No habits yet</div>
               </div>
             </div>
@@ -521,7 +592,7 @@
       <!-- KNOWLEDGE HUB -->
       <div class="page" id="page-knowledge">
         <div class="card">
-          <div class="section-label">Capture a Note / Resource</div>
+          <div class="section-label" data-i18n="label-add-note">Capture a Note / Resource</div>
           <div class="form-group"><label class="form-label">Title</label><input class="form-input" id="note-title"
               placeholder="e.g. Exam prep strategy"></div>
           <div class="form-group"><label class="form-label">Content</label><textarea class="form-input"
@@ -542,8 +613,8 @@
         </div>
         <div class="card">
           <div class="card-header">
-            <div class="card-title">Knowledge Inbox</div>
-            <input class="form-input" id="note-search" placeholder="🔍 Search..."
+            <div class="card-title" data-i18n="card-notes-inbox">Knowledge Inbox</div>
+            <input class="form-input" id="note-search" placeholder="Search..."
               style="width:200px;padding:6px 10px;font-size:13px" oninput="renderNotes()">
           </div>
           <div id="notes-list"></div>
@@ -557,8 +628,18 @@
           <!-- Toolbar -->
           <div
             style="display:flex;align-items:center;padding:10px 16px;border-bottom:1px solid var(--border);background:var(--surface);gap:12px;overflow-x:auto">
-            <button class="btn btn-sm" onclick="canvasUndo()" title="Undo">↶</button>
-            <button class="btn btn-sm" onclick="canvasRedo()" title="Redo">↷</button>
+            <button class="btn btn-sm" onclick="canvasUndo()" title="Undo"><svg width="14" height="14"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M9 14 4 9l5-5"></path>
+                <path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5v0a5.5 5.5 0 0 1-5.5 5.5H11"></path>
+              </svg></button>
+            <button class="btn btn-sm" onclick="canvasRedo()" title="Redo"><svg width="14" height="14"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="m15 14 5-5-5-5"></path>
+                <path d="M20 9H9.5A5.5 5.5 0 0 0 4 14.5v0A5.5 5.5 0 0 0 9.5 20H13"></path>
+              </svg></button>
             <div style="width:1px;height:24px;background:var(--border);margin:0 4px"></div>
 
             <button class="btn btn-sm canvas-tool active" id="tool-pen" onclick="setCanvasTool('pen')" title="Pen">
@@ -668,7 +749,7 @@
           </div>
         </div>
         <div class="card">
-          <div class="section-label">Add Transaction</div>
+          <div class="section-label" data-i18n="label-add-txn">Add Transaction</div>
           <div class="form-row">
             <div class="form-group"><label class="form-label">Description</label><input class="form-input" id="txn-desc"
                 placeholder="e.g. Groceries"></div>
@@ -705,11 +786,11 @@
         </div>
         <div class="grid-2">
           <div class="card">
-            <div class="card-title" style="margin-bottom:16px">📊 By Category</div>
+            <div class="card-title" style="margin-bottom:16px"><span data-i18n="card-budget-cats">By Category</span></div>
             <div id="budget-categories"></div>
           </div>
           <div class="card">
-            <div class="card-title" style="margin-bottom:16px">📄 Transactions</div>
+            <div class="card-title" style="margin-bottom:16px"><span data-i18n="card-budget-txns">Transactions</span></div>
             <div id="budget-list"></div>
           </div>
         </div>
@@ -722,7 +803,7 @@
             <div class="s-nav-item active" onclick="switchSettings('account',this)">Account</div>
             <div class="s-nav-item" onclick="switchSettings('theme',this)">Theme & Colors</div>
             <div class="s-nav-item" onclick="switchSettings('language',this)">Language</div>
-            <div class="s-nav-item" onclick="switchSettings('layout',this)">Layout</div>
+            <div class="s-nav-item" onclick="switchSettings('layout',this)">Sidebar</div>
             <div class="s-nav-item s-logout" onclick="authLogout()">Logout</div>
           </nav>
           <div class="settings-content">
@@ -733,7 +814,11 @@
               <div class="card">
                 <div id="s-account-display">
                   <div class="empty">
-                    <div class="empty-icon">👤</div>
+                    <div class="empty-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                      </svg></div>
                     <div class="empty-text">Not signed in</div>
                   </div>
                 </div>
@@ -746,7 +831,14 @@
                     <div style="font-size:12px;color:var(--muted);margin-top:3px">3 items per category · Upgrade for
                       unlimited</div>
                   </div>
-                  <button class="btn btn-primary btn-sm" onclick="openUpgradeModal()">⭐ Upgrade</button>
+                  <button class="btn btn-primary btn-sm" onclick="openUpgradeModal()">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;vertical-align:middle">
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                      </polygon>
+                    </svg> Upgrade
+                  </button>
                 </div>
               </div>
             </div>
@@ -763,7 +855,20 @@
                       <div class="tpb-line"></div>
                       <div class="tpb-line"></div>
                     </div>
-                    <div class="theme-card-label">☀️ Light</div>
+                    <div class="theme-card-label">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;vertical-align:middle">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                      </svg> Light
+                    </div>
                   </div>
                   <div class="theme-card" id="tc-dark" onclick="applyTheme('dark',this)">
                     <div class="theme-preview-box tpb-dark">
@@ -771,11 +876,23 @@
                       <div class="tpb-line"></div>
                       <div class="tpb-line"></div>
                     </div>
-                    <div class="theme-card-label">🌙 Dark</div>
+                    <div class="theme-card-label">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;vertical-align:middle">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                      </svg> Dark
+                    </div>
                   </div>
                   <div class="theme-card" id="tc-system" onclick="applyTheme('system',this)">
                     <div class="theme-preview-box tpb-system"></div>
-                    <div class="theme-card-label">💻 System</div>
+                    <div class="theme-card-label">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;vertical-align:middle">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                      </svg> System
+                    </div>
                   </div>
                 </div>
               </div>
@@ -834,12 +951,18 @@
                 <div class="settings-group-title">Display Language</div>
                 <select class="form-input" id="lang-select" onchange="applyLanguage(this.value)"
                   style="max-width:280px">
-                  <option value="en">🇬🇧 English</option>
+                  <option value="en">English</option>
                   <option value="hi">🇮🇳 हिंदी (Hindi)</option>
-                  <option value="ta">🇮🇳 தமிழ் (Tamil)</option>
-                  <option value="te">🇮🇳 తెలుగు (Telugu)</option>
-                  <option value="mr">🇮🇳 मराठी (Marathi)</option>
-                  <option value="bn">🇮🇳 বাংলা (Bengali)</option>
+                  <option value="zh">Chinese (中文)</option>
+                  <option value="ja">Japanese (日本語)</option>
+                  <option value="ko">Korean (한국어)</option>
+                  <option value="fr">French (Français)</option>
+                  <option value="de">German (Deutsch)</option>
+                  <option value="es">Spanish (Español)</option>
+                  <option value="ar">Arabic (العربية)</option>
+                  <option value="ru">Russian (Русский)</option>
+                  <option value="pt">Portuguese (Português)</option>
+                  <option value="it">Italian (Italiano)</option>
                 </select>
                 <p style="margin-top:12px;font-size:12px;color:var(--muted)">Interface language for menus and labels.
                 </p>
@@ -848,7 +971,7 @@
 
             <!-- Layout -->
             <div class="settings-section" id="ss-layout">
-              <div class="settings-section-title">Sidebar & Layout</div>
+              <div class="settings-section-title">Sidebar Setting</div>
               <div class="card">
                 <div class="settings-group-title">Sidebar Behavior</div>
                 <div class="layout-grid">
@@ -996,7 +1119,8 @@
     </div>
   </div>
 
-  <!-- FOOTER MODAL (Habitica Style) -->
+  <!-- DISABLED: FOOTER MODAL (Habitica Style) -->
+  <!-- 
   <div class="modal-overlay" id="footer-modal">
     <div class="footer-modal-content">
       <button class="modal-close" onclick="closeFooterModal()">✕</button>
@@ -1047,6 +1171,7 @@
       </div>
     </div>
   </div>
+  -->
 
   <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
