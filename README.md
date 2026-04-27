@@ -6,11 +6,12 @@ Plan smarter. Study better. Live efficiently.
 </div>
 
 🎯 About
-CREA (Creative Efficiency) is a full-featured, browser-based personal productivity suite designed for students and professionals. It combines all your essential daily tools — task manager, study planner, habit tracker, budget manager, Pomodoro timer, notes, and more — into a single beautiful, offline-capable web application.
+CREA (Creative Efficiency) is a full-featured, browser-based personal productivity
+suite designed for students and professionals. It combines all your essential daily tools — task manager, study planner, habit tracker, budget manager, Pomodoro timer, notes, and more — into a single beautiful, offline-capable web application.
 All data syncs in real-time to the cloud via Firebase, so your information is always available across every device you use.
 
-Built with pure HTML, CSS, and JavaScript — zero frameworks, zero build tools, just open and use.
-
+> Built with pure HTML, CSS, and JavaScript — zero frameworks, zero build tools, just open and use.
+---
 
 ✨ Features
 📋 Assignments & Tasks
