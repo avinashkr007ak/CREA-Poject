@@ -1,5 +1,5 @@
 <div align="center">
-<img src="assets/logo.png" alt="CREA Logo" width="120" />
+<img src="logo.png" alt="CREA Logo" width="120" />
 CREA — Creative Efficiency
 Your all-in-one personal productivity planner
 Plan smarter. Study better. Live efficiently.
