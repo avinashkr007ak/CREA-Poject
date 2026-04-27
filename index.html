@@ -71,45 +71,65 @@
         <span>Courses</span>
       </div>
       <div class="nav-item" onclick="showPage('study')">
-      <div class="nav-item active" onclick="showPage('dashboard')" id="nav-dashboard">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-        <span data-i18n="nav-dashboard">Dashboard</span>
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        <span>Study Planner</span>
       </div>
-      <div class="nav-item" onclick="showPage('assignments')" id="nav-assignments">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
-        <span data-i18n="nav-assignments">Assignments</span>
+      <div class="nav-item" onclick="showPage('timer')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <span>Timer</span>
       </div>
-      <div class="nav-item" onclick="showPage('courses')" id="nav-courses">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
-        <span data-i18n="nav-courses">Courses</span>
+      <div class="nav-item" onclick="showPage('habits')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span>Habits</span>
       </div>
-      <div class="nav-item" onclick="showPage('study')" id="nav-study">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-        <span data-i18n="nav-study">Study Planner</span>
+      <div class="nav-item" onclick="showPage('knowledge')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+        <span>Knowledge Hub</span>
       </div>
-      <div class="nav-item" onclick="showPage('timer')" id="nav-timer">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-        <span data-i18n="nav-timer">Focus Timer</span>
+      <div class="nav-item" onclick="showPage('draw')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+          <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+          <path d="M2 2l7.586 7.586"></path>
+          <circle cx="11" cy="11" r="2"></circle>
+        </svg>
+        <span>Canvas</span>
       </div>
-      <div class="nav-item" onclick="showPage('habits')" id="nav-habits">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-        <span data-i18n="nav-habits">Habit Tracker</span>
+      <div class="nav-item" onclick="showPage('budget')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="1" x2="12" y2="23"></line>
+          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+        </svg>
+        <span>Budget</span>
       </div>
-      <div class="nav-item" onclick="showPage('knowledge')" id="nav-knowledge">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-        <span data-i18n="nav-knowledge">Knowledge Hub</span>
-      </div>
-      <div class="nav-item" onclick="showPage('draw')" id="nav-draw">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
-        <span data-i18n="nav-draw">Canvas</span>
-      </div>
-      <div class="nav-item" onclick="showPage('budget')" id="nav-budget">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-        <span data-i18n="nav-budget">Budget</span>
-      </div>
-      <div class="nav-item" onclick="showPage('settings')" id="nav-settings">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-        <span data-i18n="nav-settings">Settings</span>
+      <div class="nav-item" onclick="showPage('settings')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path
+            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+          </path>
+        </svg>
+        <span>Settings</span>
       </div>
       <div class="nav-item upgrade-nav" onclick="openUpgradeModal()" id="nav-upgrade">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -118,13 +138,12 @@
             points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
           </polygon>
         </svg>
-        <span data-i18n="nav-premium">Go Premium</span>
+        <span>Go Premium</span>
       </div>
     </nav>
     <div class="sidebar-footer">
       <div id="clock-sidebar">--:--</div>
       <div class="date-display" id="date-sidebar"></div>
-      <!-- DISABLED: 
       <button class="about-link-btn" onclick="openFooterModal()" title="About Crea">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px">
@@ -132,7 +151,6 @@
           <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
         </svg> About & Links
       </button>
-      -->
     </div>
   </aside>
 
@@ -193,19 +211,19 @@
         <div class="stats-row">
           <div class="stat-card">
             <div class="stat-num" id="stat-tasks">0</div>
-            <div class="stat-label" data-i18n="stat-tasks">Pending Tasks</div>
+            <div class="stat-label">Pending Tasks</div>
           </div>
           <div class="stat-card">
             <div class="stat-num" id="stat-habits">0%</div>
-            <div class="stat-label" data-i18n="stat-habits">Habits Today</div>
+            <div class="stat-label">Habits Today</div>
           </div>
           <div class="stat-card">
             <div class="stat-num" id="stat-courses">0</div>
-            <div class="stat-label" data-i18n="stat-courses">Courses</div>
+            <div class="stat-label">Courses</div>
           </div>
           <div class="stat-card">
             <div class="stat-num" id="stat-balance">₹0</div>
-            <div class="stat-label" data-i18n="stat-balance">Budget Balance</div>
+            <div class="stat-label">Budget Balance</div>
           </div>
         </div>
         <div class="grid-2">
@@ -216,7 +234,7 @@
                   style="margin-right:8px;vertical-align:text-bottom">
                   <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
                   <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
-                </svg> <span data-i18n="card-due-soon">Due Soon</span></div>
+                </svg> Due Soon</div>
             </div>
             <div id="dash-tasks">
               <div class="empty">
@@ -235,7 +253,7 @@
                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                   style="margin-right:8px;vertical-align:text-bottom">
                   <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> <span data-i18n="card-habits-today">Today's Habits</span></div>
+                </svg> Today's Habits</div>
             </div>
             <div id="dash-habits">
               <div class="empty">
@@ -258,7 +276,7 @@
                 <line x1="16" y1="2" x2="16" y2="6"></line>
                 <line x1="8" y1="2" x2="8" y2="6"></line>
                 <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg> <span data-i18n="card-study-today">Today's Study Sessions</span></div>
+              </svg> Today's Study Sessions</div>
           </div>
           <div id="dash-sessions">
             <div class="empty">
@@ -276,7 +294,7 @@
       <!-- ASSIGNMENTS -->
       <div class="page" id="page-assignments">
         <div class="card">
-          <div class="section-label" data-i18n="label-add-task">Add Assignment / Exam</div>
+          <div class="section-label">Add Assignment / Exam</div>
           <div class="form-row">
             <div class="form-group"><label class="form-label">Title</label><input class="form-input" id="task-title"
                 placeholder="e.g. Math Quiz Chapter 5"></div>
@@ -310,7 +328,7 @@
         </div>
         <div class="card">
           <div class="card-header">
-            <div class="card-title" data-i18n="card-all-tasks">All Tasks</div>
+            <div class="card-title">All Tasks</div>
             <div style="display:flex;gap:8px">
               <select class="form-input" id="filter-status" style="width:auto;padding:5px 10px;font-size:12px"
                 onchange="renderTasks()">
@@ -335,7 +353,7 @@
       <!-- COURSES -->
       <div class="page" id="page-courses">
         <div class="card">
-          <div class="section-label" data-i18n="label-add-course">Add Course</div>
+          <div class="section-label">Add Course</div>
           <div class="form-row">
             <div class="form-group"><label class="form-label">Course Name</label><input class="form-input"
                 id="course-name" placeholder="e.g. AP Physics"></div>
@@ -355,7 +373,7 @@
       <!-- STUDY PLANNER -->
       <div class="page" id="page-study">
         <div class="card">
-          <div class="section-label" data-i18n="label-add-session">Add Study Session</div>
+          <div class="section-label">Add Study Session</div>
           <div class="form-row">
             <div class="form-group"><label class="form-label">Day</label>
               <select class="form-input" id="session-day">
@@ -445,7 +463,7 @@
             <!-- RUNNING VIEW -->
             <div id="pomo-running-view" style="display:none;width:100%;height:100%;flex-direction:column">
               <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-                <div style="font-weight:600;font-size:14px" id="pomo-period-info" data-i18n="pomo-focus-period">Focus period</div>
+                <div style="font-weight:600;font-size:14px" id="pomo-period-info">Focus period (1 of 2)</div>
                 <button style="background:none;border:none;color:var(--text);cursor:pointer;font-size:18px"><svg
                     width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round">
@@ -503,7 +521,7 @@
                 <line x1="18" y1="20" x2="18" y2="10"></line>
                 <line x1="12" y1="20" x2="12" y2="4"></line>
                 <line x1="6" y1="20" x2="6" y2="14"></line>
-              </svg> <span data-i18n="card-pomo-today">Today's Sessions</span></div>
+              </svg> Today's Sessions</div>
             <div id="pomo-log">
               <div class="empty">
                 <div class="empty-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"
@@ -536,7 +554,7 @@
       <!-- HABITS -->
       <div class="page" id="page-habits">
         <div class="card">
-          <div class="section-label" data-i18n="label-add-habit">Add Habit</div>
+          <div class="section-label">Add Habit</div>
           <div class="form-row">
             <div class="form-group"><label class="form-label">Habit Name</label><input class="form-input"
                 id="habit-name" placeholder="e.g. 💧 Drink water"></div>
@@ -556,7 +574,7 @@
         <div class="grid-2">
           <div class="card">
             <div class="card-header">
-              <div class="card-title" data-i18n="card-habits-today-2">Today's Habits</div>
+              <div class="card-title">Today's Habits</div>
               <div id="habits-pct"
                 style="font-family:var(--font-head);font-size:18px;font-weight:700;color:var(--green)">0%</div>
             </div>
@@ -574,7 +592,7 @@
                 <path
                   d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.5 2.5 6.5 1 1.5 1 3.5-.5 5-1.5 1.5-3 1.5-4.5 1.5z">
                 </path>
-              </svg> <span data-i18n="card-habits-stats">Streaks & Stats</span></div>
+              </svg> Streaks & Stats</div>
             <div id="habits-stats">
               <div class="empty">
                 <div class="empty-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"
@@ -592,7 +610,7 @@
       <!-- KNOWLEDGE HUB -->
       <div class="page" id="page-knowledge">
         <div class="card">
-          <div class="section-label" data-i18n="label-add-note">Capture a Note / Resource</div>
+          <div class="section-label">Capture a Note / Resource</div>
           <div class="form-group"><label class="form-label">Title</label><input class="form-input" id="note-title"
               placeholder="e.g. Exam prep strategy"></div>
           <div class="form-group"><label class="form-label">Content</label><textarea class="form-input"
@@ -613,8 +631,8 @@
         </div>
         <div class="card">
           <div class="card-header">
-            <div class="card-title" data-i18n="card-notes-inbox">Knowledge Inbox</div>
-            <input class="form-input" id="note-search" placeholder="Search..."
+            <div class="card-title">Knowledge Inbox</div>
+            <input class="form-input" id="note-search" placeholder="🔍 Search..."
               style="width:200px;padding:6px 10px;font-size:13px" oninput="renderNotes()">
           </div>
           <div id="notes-list"></div>
@@ -749,7 +767,7 @@
           </div>
         </div>
         <div class="card">
-          <div class="section-label" data-i18n="label-add-txn">Add Transaction</div>
+          <div class="section-label">Add Transaction</div>
           <div class="form-row">
             <div class="form-group"><label class="form-label">Description</label><input class="form-input" id="txn-desc"
                 placeholder="e.g. Groceries"></div>
@@ -786,11 +804,11 @@
         </div>
         <div class="grid-2">
           <div class="card">
-            <div class="card-title" style="margin-bottom:16px"><span data-i18n="card-budget-cats">By Category</span></div>
+            <div class="card-title" style="margin-bottom:16px">📊 By Category</div>
             <div id="budget-categories"></div>
           </div>
           <div class="card">
-            <div class="card-title" style="margin-bottom:16px"><span data-i18n="card-budget-txns">Transactions</span></div>
+            <div class="card-title" style="margin-bottom:16px">📄 Transactions</div>
             <div id="budget-list"></div>
           </div>
         </div>
@@ -951,18 +969,12 @@
                 <div class="settings-group-title">Display Language</div>
                 <select class="form-input" id="lang-select" onchange="applyLanguage(this.value)"
                   style="max-width:280px">
-                  <option value="en">English</option>
+                  <option value="en">🇬🇧 English</option>
                   <option value="hi">🇮🇳 हिंदी (Hindi)</option>
-                  <option value="zh">Chinese (中文)</option>
-                  <option value="ja">Japanese (日本語)</option>
-                  <option value="ko">Korean (한국어)</option>
-                  <option value="fr">French (Français)</option>
-                  <option value="de">German (Deutsch)</option>
-                  <option value="es">Spanish (Español)</option>
-                  <option value="ar">Arabic (العربية)</option>
-                  <option value="ru">Russian (Русский)</option>
-                  <option value="pt">Portuguese (Português)</option>
-                  <option value="it">Italian (Italiano)</option>
+                  <option value="ta">🇮🇳 தமிழ் (Tamil)</option>
+                  <option value="te">🇮🇳 తెలుగు (Telugu)</option>
+                  <option value="mr">🇮🇳 मराठी (Marathi)</option>
+                  <option value="bn">🇮🇳 বাংলা (Bengali)</option>
                 </select>
                 <p style="margin-top:12px;font-size:12px;color:var(--muted)">Interface language for menus and labels.
                 </p>
@@ -1119,8 +1131,7 @@
     </div>
   </div>
 
-  <!-- DISABLED: FOOTER MODAL (Habitica Style) -->
-  <!-- 
+  <!-- FOOTER MODAL (Habitica Style) -->
   <div class="modal-overlay" id="footer-modal">
     <div class="footer-modal-content">
       <button class="modal-close" onclick="closeFooterModal()">✕</button>
@@ -1171,7 +1182,6 @@
       </div>
     </div>
   </div>
-  -->
 
   <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
