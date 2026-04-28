@@ -97,8 +97,6 @@ All data syncs in real-time to the cloud via Firebase, so your information is al
 
 ## 📸 Screenshots
 
-> *(Add your own screenshots here)*
-
 | Dashboard | Tasks | Pomodoro |
 |-----------|-------|----------|
 | ![Dashboard]() | ![Tasks]() | ![Pomodoro]() |
