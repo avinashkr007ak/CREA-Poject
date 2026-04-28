@@ -99,7 +99,7 @@ All data syncs in real-time to the cloud via Firebase, so your information is al
 
 | Dashboard | Tasks | Pomodoro |
 |-----------|-------|----------|
-| ![Dashboard]() | ![Tasks]() | ![Pomodoro]() |
+| ![Dashboard](dashboard.png) | ![Tasks]() | ![Pomodoro]() |
 
 | Habits | Budget | Settings |
 |--------|--------|----------|
