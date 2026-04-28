@@ -101,11 +101,11 @@ All data syncs in real-time to the cloud via Firebase, so your information is al
 
 | Dashboard | Tasks | Pomodoro |
 |-----------|-------|----------|
-| ![Dashboard](assets/screenshots/dashboard.png) | ![Tasks](assets/screenshots/tasks.png) | ![Pomodoro](assets/screenshots/pomodoro.png) |
+| ![Dashboard]() | ![Tasks]() | ![Pomodoro]() |
 
 | Habits | Budget | Settings |
 |--------|--------|----------|
-| ![Habits](assets/screenshots/habits.png) | ![Budget](assets/screenshots/budget.png) | ![Settings](assets/screenshots/settings.png) |
+| ![Habits](assets/screenshots/habits.png) | ![Budget]() | ![Settings]() |
 
 ---
 
