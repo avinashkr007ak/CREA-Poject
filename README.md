@@ -116,9 +116,6 @@ All data syncs in real-time to the cloud via Firebase, so your information is al
 | **Database** | Firebase Firestore (NoSQL, real-time sync) |
 | **Security** | Custom XSS & SQL-injection sanitizer, rate limiting |
 | **Hosting** | GitHub Pages / Netlify / Vercel (static) |
-| **Desktop** | Electron (Windows .exe) |
-| **Fonts** | Google Fonts |
-| **Icons** | Inline SVG |
 
 ---
 
