@@ -103,7 +103,7 @@ All data syncs in real-time to the cloud via Firebase, so your information is al
 
 | Habits | Budget | Settings |
 |--------|--------|----------|
-| ![Habits](assests/habits.png) | ![Budget](budget.png) | ![Settings](settings.png) |
+| ![Habits](assets/habits.png) | ![Budget](budget.png) | ![Settings](settings.png) |
 
 ---
 
