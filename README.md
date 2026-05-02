@@ -6,7 +6,7 @@
 
 **Your all-in-one personal productivity planner**
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-2ea44f?style=for-the-badge&logo=googlechrome&logoColor=white)](https://avinashkr007ak.github.io/crea-app)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-2ea44f?style=for-the-badge&logo=googlechrome&logoColor=white)](https://avinashkr007ak.github.io/index.html)
 [![Firebase](https://img.shields.io/badge/Firebase-Cloud%20Sync-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)](https://firebase.google.com)
 [![HTML5](https://img.shields.io/badge/HTML5-Pure%20Web-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
